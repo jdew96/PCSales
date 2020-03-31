@@ -1,0 +1,51 @@
+﻿<Properties StartupConfiguration="{784974F3-B6C8-4623-9DF5-D09918F5A621}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="PcSales/Models/StorageSpec.cs">
+    <Files>
+      <File FileName="PcSales/Startup.cs" Line="31" Column="12" />
+      <File FileName="PcSales/Models/AppDbContext.cs" Line="21" Column="63" />
+      <File FileName="PcSales/Models/SystemModel.cs" Line="5" Column="16" />
+      <File FileName="PcSales/Models/SystemToPartModel.cs" Line="4" Column="30" />
+      <File FileName="PcSales/appsettings.json" Line="11" Column="47" />
+      <File FileName="PcSales/wwwroot/js/site.js" Line="7" Column="15" />
+      <File FileName="PcSales/Controllers/SystemController.cs" Line="38" Column="74" />
+      <File FileName="PcSales/Views/System/Index.cshtml" Line="8" Column="95" />
+      <File FileName="PcSales/Models/CaseSpec.cs" Line="6" Column="36" />
+      <File FileName="PcSales/Models/CpuSpec.cs" Line="6" Column="41" />
+      <File FileName="PcSales/Models/GpuSpec.cs" Line="9" Column="38" />
+      <File FileName="PcSales/Models/MoboSpec.cs" Line="18" Column="1" />
+      <File FileName="PcSales/Models/PsuSpec.cs" Line="12" Column="22" />
+      <File FileName="PcSales/Models/RamSpec.cs" Line="9" Column="47" />
+      <File FileName="PcSales/Models/StorageSpec.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="PcSales" expanded="True">
+            <Node name="PcSales" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="StorageSpec.cs" selected="True" />
+              </Node>
+              <Node name="Properties" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Shared" expanded="True" />
+                <Node name="System" expanded="True" />
+              </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="css" expanded="True" />
+                <Node name="js" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.PcSales PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

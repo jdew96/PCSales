@@ -1,0 +1,99 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/jackdew/Desktop/PcSales/PcSales/PcSales.csproj": {}
+  },
+  "projects": {
+    "/Users/jackdew/Desktop/PcSales/PcSales/PcSales.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/jackdew/Desktop/PcSales/PcSales/PcSales.csproj",
+        "projectName": "PcSales",
+        "projectPath": "/Users/jackdew/Desktop/PcSales/PcSales/PcSales.csproj",
+        "packagesPath": "/Users/jackdew/.nuget/packages/",
+        "outputPath": "/Users/jackdew/Desktop/PcSales/PcSales/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/jackdew/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Angular.UI.Bootstrap": {
+              "target": "Package",
+              "version": "[2.5.0, )"
+            },
+            "AngularJS.Core": {
+              "target": "Package",
+              "version": "[1.7.9, )"
+            },
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.3, )"
+            },
+            "Npm": {
+              "target": "Package",
+              "version": "[3.5.2, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[2.9.0, )"
+            },
+            "angularjs": {
+              "target": "Package",
+              "version": "[1.7.8.1, )"
+            },
+            "jQuery": {
+              "target": "Package",
+              "version": "[3.4.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.200/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
