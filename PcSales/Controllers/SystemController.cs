@@ -6,16 +6,19 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PcSales.Models;
+using PcSales.Models.Interfaces;
 
 namespace PcSales.Controllers
 {
     public class SystemController : Controller
     {
         private readonly ILogger<SystemController> _logger;
+        private readonly ISystemRepository _systemRepository;
 
-        public SystemController(ILogger<SystemController> logger)
+        public SystemController(ILogger<SystemController> logger, ISystemRepository systemRepository)
         {
             _logger = logger;
+            _systemRepository = systemRepository;
         }
 
         public IActionResult Index()
@@ -30,14 +33,9 @@ namespace PcSales.Controllers
         }
 
         [HttpGet("api/[controller]/getAll")]
-        public ActionResult<IEnumerable<Models.System>> GetAllSystems()
+        public ActionResult<IEnumerable<Models.SystemForSale>> GetAllSystems()
         {
-            // Will use dummy data for the time being to test functionality 
-            return new[]
-            {
-                new Models.System { Name =  "System 1", Price = 147.00 },
-                new Models.System {  Name = "System 2", Price = 312.32}
-            };
+             return _systemRepository.GetAllSystems().ToList();
         }
     }
 }

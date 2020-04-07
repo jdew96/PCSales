@@ -2,7 +2,7 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div ng-app="PcSalesApp" ng-controller="loadTestController as vm">
+<div ng-app="PcSalesApp" ng-controller="systemListController as vm">
 
     <div class="text-center">
         <table ng-table="vm.systems" class="table table-condensed table-bordered table-striped">
@@ -13,7 +13,7 @@
                 </tr>
             </thead>
             <tr ng-repeat="sys in vm.systems">
-                <td class="text-left">{{sys.name}}</td>
+                <td class="text-left">{{sys.systemName}}</td>
                 <td class="text-left">${{sys.price}}</td>
             </tr>
         </table>

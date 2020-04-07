@@ -6,10 +6,13 @@
 // Define app module which will be used to instantiate all controllers and services
 var PcSalesApp = angular.module("PcSalesApp", []);
 
+
+/** CODE FOR SYSTEM LIST PAGE ***/
 // Set of endpoints to handle system data CRUD
 PcSalesApp.factory("systemService", ["$http", function ($http) {
     var service = {
         getAll: getAll
+        // List of functions, seperated by comma
     };
     return service;
 
@@ -17,11 +20,12 @@ PcSalesApp.factory("systemService", ["$http", function ($http) {
         return $http.get("api/system/getAll");
     }
 
+
 }]);
 
 // Controller for systems index page
 
-PcSalesApp.controller("loadTestController", ["systemService", function (systemService) {
+PcSalesApp.controller("systemListController", ["systemService", function (systemService) {
     var vm = this;
 
     systemService.getAll()
@@ -30,6 +34,7 @@ PcSalesApp.controller("loadTestController", ["systemService", function (systemSe
             vm.systems = response.data;
             //console.log("systems: ", vm.systems);
         });
-   
+
+/************ END *********/
 
 }]);

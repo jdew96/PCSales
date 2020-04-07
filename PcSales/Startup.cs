@@ -11,6 +11,8 @@ using Microsoft.Extensions.Hosting;
 using PcSales.Models;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using Microsoft.EntityFrameworkCore;
+using PcSales.Models.Interfaces;
+using PcSales.Models.Repositories;
 
 namespace PcSales
 {
@@ -31,8 +33,9 @@ namespace PcSales
             services.AddDbContextPool<AppDbContext>(options =>
                 options.UseSqlServer(_config.GetConnectionString("SqlDb"))
             );
-
+             
             services.AddControllersWithViews();
+            services.AddScoped<ISystemRepository, SystemRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
