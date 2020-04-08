@@ -48,6 +48,10 @@
               "target": "Package",
               "version": "[6.4.0, )"
             },
+            "JObject": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.3, )"

@@ -16,6 +16,7 @@
     <PackageReference Include="angularjs" Version="1.7.8.1" />
     <PackageReference Include="AngularJS.Core" Version="1.7.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.3" />
+    <PackageReference Include="JObject" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
     <Content Update="wwwroot\js\site.js">
@@ -30,5 +31,9 @@
     <Content Update="Views\System\Index.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\Interfaces\" />
+    <Folder Include="Models\Repositories\" />
   </ItemGroup>
 </Project>

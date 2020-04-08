@@ -72,3 +72,7 @@
 /Users/jackdew/Desktop/PcSales/PcSales/bin/Debug/netcoreapp3.1/runtimes/unix/lib/netcoreapp2.0/System.Runtime.Caching.dll
 /Users/jackdew/Desktop/PcSales/PcSales/bin/Debug/netcoreapp3.1/runtimes/win/lib/netcoreapp2.0/System.Runtime.Caching.dll
 /Users/jackdew/Desktop/PcSales/PcSales/obj/Debug/netcoreapp3.1/PcSales.csprojAssemblyReference.cache
+/Users/jackdew/Desktop/PcSales/PcSales/bin/Debug/netcoreapp3.1/mono_crash.42f6ec1fa.0.json
+/Users/jackdew/Desktop/PcSales/PcSales/obj/Debug/netcoreapp3.1/Razor/Views/System/Update.cshtml.g.cs
+/Users/jackdew/Desktop/PcSales/PcSales/bin/Debug/netcoreapp3.1/JObject.dll
+/Users/jackdew/Desktop/PcSales/PcSales/bin/Debug/netcoreapp3.1/Newtonsoft.Json.dll

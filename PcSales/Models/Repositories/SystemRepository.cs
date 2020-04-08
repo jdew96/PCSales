@@ -43,8 +43,13 @@ namespace PcSales.Models.Repositories
         {
             SystemForSale sys = _context.SystemsForSale.FirstOrDefault(s => s.SystemId == systemChanges.SystemId);
             if (sys != null)
-                _context.SystemsForSale.Update(sys);
-            return _context.SaveChanges();
+            {
+                _context.Entry(sys).CurrentValues.SetValues(systemChanges);
+                return _context.SaveChanges();
+            }
+
+            // Update failed 
+            return -1;
         }
     }
 }

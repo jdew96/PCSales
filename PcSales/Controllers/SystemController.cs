@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Linq;
 using PcSales.Models;
 using PcSales.Models.Interfaces;
 
@@ -26,16 +26,27 @@ namespace PcSales.Controllers
             return View();
         }
 
+        public IActionResult Update()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        [HttpGet("api/[controller]/getAll")]
-        public ActionResult<IEnumerable<Models.SystemForSale>> GetAllSystems()
+        [HttpGet("api/[controller]/GetAll")]
+        public ActionResult<IEnumerable<SystemForSale>> GetAllSystems()
         {
              return _systemRepository.GetAllSystems().ToList();
+        }
+
+        [Route("api/[controller]/UpdateSystem/")]
+        public ActionResult<int> UpdateSystem([FromBody] SystemForSale system)
+        {
+            return _systemRepository.Update(system);
         }
     }
 }

@@ -11,15 +11,28 @@ var PcSalesApp = angular.module("PcSalesApp", []);
 // Set of endpoints to handle system data CRUD
 PcSalesApp.factory("systemService", ["$http", function ($http) {
     var service = {
-        getAll: getAll
+        getAll: getAll,
+        update: update
         // List of functions, seperated by comma
     };
     return service;
 
     function getAll() {
-        return $http.get("api/system/getAll");
+        return $http.get("api/system/GetAll");
     }
 
+    function update(system) {
+
+        $.ajax({
+            type: 'POST',
+            url: "/api/system/UpdateSystem/",
+            data: system,
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: function (data) { console.log(data) }
+        });
+       
+    }
 
 }]);
 
@@ -30,11 +43,22 @@ PcSalesApp.controller("systemListController", ["systemService", function (system
 
     systemService.getAll()
         .then(function (response) {
-            console.log("response: ", response);
+            console.log("all systems: ", response);
             vm.systems = response.data;
-            //console.log("systems: ", vm.systems);
         });
 
-/************ END *********/
+}]);
+
+// Controller for systems index page
+
+PcSalesApp.controller("systemUpdateController", ["systemService", function (systemService) {
+    var vm = this;
+
+    var system = { SystemId: 1, SystemName: "Test Edit 1", Price: 127.00,  InventoryCount: 12 };
+
+    systemService.update(JSON.stringify(system))
+        .then(function (response) {
+            console.log("response: ", response);
+        })
 
 }]);
