@@ -21,6 +21,16 @@ namespace PcSales.Controllers
             _systemRepository = systemRepository;
         }
 
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        public IActionResult Delete()
+        {
+            return View();
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -37,6 +47,19 @@ namespace PcSales.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+        [Route("api/[controller]/AddSystem/")]
+        public ActionResult<int> AddSystem([FromBody] SystemForSale system)
+        {
+            return _systemRepository.Add(system);
+        }
+
+        [Route("/api/[controller]/DeleteSystem/{id}")]
+        public ActionResult<int> DeleteSystem(int id)
+        {
+            return _systemRepository.Delete(id);
+        }
+
+
         [HttpGet("api/[controller]/GetAll")]
         public ActionResult<IEnumerable<SystemForSale>> GetAllSystems()
         {
@@ -48,5 +71,7 @@ namespace PcSales.Controllers
         {
             return _systemRepository.Update(system);
         }
+
+
     }
 }

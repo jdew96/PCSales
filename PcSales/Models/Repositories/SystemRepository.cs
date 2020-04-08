@@ -24,8 +24,12 @@ namespace PcSales.Models.Repositories
         {
             SystemForSale sys = _context.SystemsForSale.FirstOrDefault(s => s.SystemId == id);
             if (sys != null)
+            {
                 _context.SystemsForSale.Remove(sys);
-            return _context.SaveChanges();
+                return _context.SaveChanges();
+            }
+
+            return -1;
         }
 
         public IEnumerable<SystemForSale> GetAllSystems()

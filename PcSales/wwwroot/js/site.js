@@ -7,29 +7,44 @@
 var PcSalesApp = angular.module("PcSalesApp", []);
 
 
-/** CODE FOR SYSTEM LIST PAGE ***/
 // Set of endpoints to handle system data CRUD
 PcSalesApp.factory("systemService", ["$http", function ($http) {
     var service = {
+        addSystem: addSystem,
+        deleteSystem: deleteSystem,
         getAll: getAll,
-        update: update
+        updateSystem: updateSystem
         // List of functions, seperated by comma
     };
     return service;
+
+    function addSystem(system) {
+        $.ajax({
+            type: 'POST',
+            url: "/api/system/AddSystem/",
+            data: system,
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json'
+        });
+    }
+
+    function deleteSystem(id) {
+
+        return $http.post("/api/system/DeleteSystem/" + id);
+    }
 
     function getAll() {
         return $http.get("api/system/GetAll");
     }
 
-    function update(system) {
+    function updateSystem(system) {
 
         $.ajax({
             type: 'POST',
             url: "/api/system/UpdateSystem/",
             data: system,
             contentType: 'application/json; charset=utf-8',
-            dataType: 'json',
-            success: function (data) { console.log(data) }
+            dataType: 'json'
         });
        
     }
@@ -49,14 +64,41 @@ PcSalesApp.controller("systemListController", ["systemService", function (system
 
 }]);
 
-// Controller for systems index page
+// Controller for update system page
 
 PcSalesApp.controller("systemUpdateController", ["systemService", function (systemService) {
     var vm = this;
 
     var system = { SystemId: 1, SystemName: "Test Edit 1", Price: 127.00,  InventoryCount: 12 };
 
-    systemService.update(JSON.stringify(system))
+    systemService.updateSystem(JSON.stringify(system))
+        .then(function (response) {
+            console.log("response: ", response);
+        })
+
+}]);
+
+// Controller for add system page
+
+PcSalesApp.controller("systemAddController", ["systemService", function (systemService) {
+    var vm = this;
+
+    var system = { SystemName: "Test Add 1", Price: 127.00, InventoryCount: 12 };
+
+    systemService.addSystem(JSON.stringify(system))
+        .then(function (response) {
+            console.log("response: ", response);
+        })
+
+}]);
+
+// Controller for delete system page
+
+PcSalesApp.controller("systemDeleteController", ["systemService", function (systemService) {
+    var vm = this;
+
+    // Delete system with systemId 4
+    systemService.deleteSystem(4)
         .then(function (response) {
             console.log("response: ", response);
         })
