@@ -19,7 +19,7 @@ PcSalesApp.factory("systemService", ["$http", function ($http) {
     return service;
 
     function addSystem(system) {
-        $.ajax({
+        return $.ajax({
             type: 'POST',
             url: "/api/system/AddSystem/",
             data: system,
@@ -29,7 +29,6 @@ PcSalesApp.factory("systemService", ["$http", function ($http) {
     }
 
     function deleteSystem(id) {
-
         return $http.post("/api/system/DeleteSystem/" + id);
     }
 
@@ -39,7 +38,7 @@ PcSalesApp.factory("systemService", ["$http", function ($http) {
 
     function updateSystem(system) {
 
-        $.ajax({
+        return $.ajax({
             type: 'POST',
             url: "/api/system/UpdateSystem/",
             data: system,
@@ -69,7 +68,7 @@ PcSalesApp.controller("systemListController", ["systemService", function (system
 PcSalesApp.controller("systemUpdateController", ["systemService", function (systemService) {
     var vm = this;
 
-    var system = { SystemId: 1, SystemName: "Test Edit 1", Price: 127.00,  InventoryCount: 12 };
+    var system = { SystemId: 1, SystemName: "Test Edit 2", Price: 189.00,  InventoryCount: 24 };
 
     systemService.updateSystem(JSON.stringify(system))
         .then(function (response) {
@@ -80,15 +79,32 @@ PcSalesApp.controller("systemUpdateController", ["systemService", function (syst
 
 // Controller for add system page
 
-PcSalesApp.controller("systemAddController", ["systemService", function (systemService) {
+PcSalesApp.controller("systemAddController", ["systemService", "$window", function (systemService, $window) {
     var vm = this;
 
-    var system = { SystemName: "Test Add 1", Price: 127.00, InventoryCount: 12 };
+    var system = { SystemName: "Test Add 2", Price: 127.00, InventoryCount: 12 };
 
-    systemService.addSystem(JSON.stringify(system))
-        .then(function (response) {
-            console.log("response: ", response);
-        })
+    vm.system = null;
+    vm.submit = submit;
+
+    function submit() {
+        console.log(vm.system);
+        systemService.addSystem(JSON.stringify(vm.system))
+            .then(function (response) {
+                console.log("response: ", response);
+                if (response == 1) {
+                    alert("Form submitted successfully!");
+                    $window.location.href = "/";
+                }
+                else
+                    alert("Error submitted form!");
+
+
+            });
+
+    }
+    
+   
 
 }]);
 

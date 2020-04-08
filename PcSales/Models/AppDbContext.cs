@@ -28,7 +28,7 @@ namespace PcSales.Models
             });
 
             modelBuilder.Entity<CpuSpec>(entity =>
-            {
+            { 
                 entity.HasKey(e => e.PartNum).HasName("PartNum");
             });
 

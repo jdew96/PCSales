@@ -23,6 +23,7 @@ namespace PcSales.Models.Repositories
         public int Delete(int id)
         {
             SystemForSale sys = _context.SystemsForSale.FirstOrDefault(s => s.SystemId == id);
+           
             if (sys != null)
             {
                 _context.SystemsForSale.Remove(sys);
@@ -46,7 +47,7 @@ namespace PcSales.Models.Repositories
         public int Update(SystemForSale systemChanges)
         {
             SystemForSale sys = _context.SystemsForSale.FirstOrDefault(s => s.SystemId == systemChanges.SystemId);
-            if (sys != null)
+            if (sys != null) // Record with matching systemId was found 
             {
                 _context.Entry(sys).CurrentValues.SetValues(systemChanges);
                 return _context.SaveChanges();
