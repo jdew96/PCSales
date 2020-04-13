@@ -1,12 +1,10 @@
 CREATE DATABASE PcSalesInventory
 
-using PcSalesInventory
 CREATE TABLE SystemsForSale(
-    SystemId INT NOT NULL, 
+    SystemId int IDENTITY(1,1) PRIMARY KEY, 
     Price FLOAT NOT NULL,
     SystemName VARCHAR(255) NOT NULL,
     InventoryCount INT NOT NULL,
-    PRIMARY KEY(SystemId)
 );
 
 CREATE TABLE SystemToPart(
