@@ -1,15 +1,14 @@
 ﻿<Properties StartupConfiguration="{784974F3-B6C8-4623-9DF5-D09918F5A621}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="PcSales/Models/SystemForSale.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="PcSales/Models/Repositories/CaseSpecRepository.cs">
     <Files>
-      <File FileName="PcSales/Controllers/SystemController.cs" Line="50" Column="68" IsPinned="True" />
-      <File FileName="PcSales/Models/Repositories/SystemRepository.cs" Line="26" Column="12" IsPinned="True" />
-      <File FileName="PcSales/Models/Interfaces/ISystemRepository.cs" Line="8" Column="9" />
-      <File FileName="PcSales/Models/AppDbContext.cs" Line="31" Column="14" />
-      <File FileName="PcSales/Startup.cs" Line="33" Column="13" />
-      <File FileName="PcSales/appsettings.json" Line="14" Column="1" />
-      <File FileName="PcSales/wwwroot/js/site.js" Line="85" Column="82" />
-      <File FileName="PcSales/Views/System/Add.cshtml" Line="1" Column="1" />
-      <File FileName="PcSales/Models/SystemForSale.cs" Line="13" Column="1" />
+      <File FileName="PcSales/Models/Interfaces/ICaseSpecRespository.cs" Line="6" Column="42" IsPinned="True" />
+      <File FileName="PcSales/Views/CaseSpec/Index.cshtml" Line="20" Column="47" />
+      <File FileName="PcSales/wwwroot/js/site.js" Line="151" Column="42" />
+      <File FileName="PcSales/Views/System/Index.cshtml" Line="7" Column="5" />
+      <File FileName="PcSales/Models/Repositories/CaseSpecRepository.cs" Line="36" Column="46" />
+      <File FileName="PcSales/Models/AppDbContext.cs" Line="1" Column="1" />
+      <File FileName="PcSales/Controllers/CaseSpecController.cs" Line="18" Column="76" />
+      <File FileName="PcSales/Models/Repositories/SystemRepository.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -20,11 +19,13 @@
               <Node name="Controllers" expanded="True" />
               <Node name="Models" expanded="True">
                 <Node name="Interfaces" expanded="True" />
-                <Node name="Repositories" expanded="True" />
-                <Node name="SystemForSale.cs" selected="True" />
+                <Node name="Repositories" expanded="True">
+                  <Node name="CaseSpecRepository.cs" selected="True" />
+                </Node>
               </Node>
               <Node name="Properties" expanded="True" />
               <Node name="Views" expanded="True">
+                <Node name="CaseSpec" expanded="True" />
                 <Node name="Shared" expanded="True" />
                 <Node name="System" expanded="True" />
               </Node>
@@ -42,7 +43,11 @@
   <MonoDevelop.Ide.ItemProperties.PcSales PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/jackdew/Desktop/PcSales/PcSales/Models/Repositories/CaseSpecRepository.cs" relfile="PcSales/Models/Repositories/CaseSpecRepository.cs" line="38" column="1" />
+      <Breakpoint file="/Users/jackdew/Desktop/PcSales/PcSales/Models/Repositories/CaseSpecRepository.cs" relfile="PcSales/Models/Repositories/CaseSpecRepository.cs" line="39" column="1" />
+      <Breakpoint file="/Users/jackdew/Desktop/PcSales/PcSales/Controllers/CaseSpecController.cs" relfile="PcSales/Controllers/CaseSpecController.cs" line="60" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

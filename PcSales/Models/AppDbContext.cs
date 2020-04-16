@@ -10,13 +10,13 @@ namespace PcSales.Models
 
         }
 
-        public DbSet<CaseSpec> CaseSpecs { get; set; }
-        public DbSet<CpuSpec> CpuSpecs { get; set; }
-        public DbSet<GpuSpec> GpuSpecs { get; set; }
-        public DbSet<MoboSpec> MoboSpecs { get; set; }
-        public DbSet<PsuSpec> PsuSpecs { get; set; }
-        public DbSet<RamSpec> RamSpecs { get; set; }
-        public DbSet<StorageSpec> StorageSpecs { get; set; }
+        public DbSet<CaseSpec> CaseSpec { get; set; }
+        public DbSet<CpuSpec> CpuSpec { get; set; }
+        public DbSet<GpuSpec> GpuSpec { get; set; }
+        public DbSet<MoboSpec> MoboSpec { get; set; }
+        public DbSet<PsuSpec> PsuSpec { get; set; }
+        public DbSet<RamSpec> RamSpec { get; set; }
+        public DbSet<StorageSpec> StorageSpec { get; set; }
         public DbSet<SystemForSale> SystemsForSale { get; set; }
         public DbSet<SystemToPart> SystemToParts { get; set; }
 

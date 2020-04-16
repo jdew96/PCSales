@@ -78,3 +78,4 @@
 /Users/jackdew/Desktop/PcSales/PcSales/bin/Debug/netcoreapp3.1/Newtonsoft.Json.dll
 /Users/jackdew/Desktop/PcSales/PcSales/obj/Debug/netcoreapp3.1/Razor/Views/System/Add.cshtml.g.cs
 /Users/jackdew/Desktop/PcSales/PcSales/obj/Debug/netcoreapp3.1/Razor/Views/System/Delete.cshtml.g.cs
+/Users/jackdew/Desktop/PcSales/PcSales/obj/Debug/netcoreapp3.1/Razor/Views/CaseSpec/Index.cshtml.g.cs
