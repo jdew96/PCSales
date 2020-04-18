@@ -115,7 +115,7 @@ PcSalesApp.controller("systemDeleteController", ["systemService", function (syst
 
     // Delete system with systemId 4
 
-    systemService.deleteSystem(id)
+    systemService.deleteSystem(14)
         .then(function (response) {
             console.log("response: ", response);
         })
