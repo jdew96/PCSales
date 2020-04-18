@@ -55,7 +55,8 @@ namespace PcSales.Controllers
         [Route("/api/[controller]/DeleteSystem/{id}")]
         public ActionResult<int> DeleteSystem(int id)
         {
-            return _systemRepository.Delete(id);
+            int delete_return = _systemRepository.Delete(id);
+            return delete_return;
         }
 
 
