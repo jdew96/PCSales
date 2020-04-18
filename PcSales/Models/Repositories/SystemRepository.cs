@@ -33,7 +33,7 @@ namespace PcSales.Models.Repositories
             return -1;
         }
 
-        public IEnumerable<SystemForSale> GetAllSystems()
+        public IEnumerable<SystemForSale> GetAll()
         {
             List<SystemForSale> systemsForSale = _context.SystemsForSale.ToList();
             return systemsForSale;

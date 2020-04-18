@@ -61,9 +61,9 @@ namespace PcSales.Controllers
 
 
         [HttpGet("api/[controller]/GetAll")]
-        public ActionResult<IEnumerable<SystemForSale>> GetAllSystems()
+        public ActionResult<IEnumerable<SystemForSale>> GetAll()
         {
-             return _systemRepository.GetAllSystems().ToList();
+             return _systemRepository.GetAll().ToList();
         }
 
         [Route("api/[controller]/UpdateSystem/")]

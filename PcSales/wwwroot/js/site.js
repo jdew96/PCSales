@@ -8,6 +8,7 @@ var PcSalesApp = angular.module("PcSalesApp", []);
 
 
 // Set of endpoints to handle system data CRUD
+
 PcSalesApp.factory("systemService", ["$http", function ($http) {
     var service = {
         addSystem: addSystem,
@@ -50,6 +51,7 @@ PcSalesApp.factory("systemService", ["$http", function ($http) {
 
 }]);
 
+/******** SYSTEMS ************/
 // Controller for systems index page
 
 PcSalesApp.controller("systemListController", ["systemService", function (systemService) {
@@ -81,8 +83,6 @@ PcSalesApp.controller("systemUpdateController", ["systemService", function (syst
 
 PcSalesApp.controller("systemAddController", ["systemService", "$window", function (systemService, $window) {
     var vm = this;
-
-    var system = { SystemName: "Test Add 2", Price: 127.00, InventoryCount: 12 };
 
     vm.system = null;
     vm.submit = submit;
@@ -125,6 +125,35 @@ PcSalesApp.controller("systemDeleteController", ["systemService", "window", func
                 }
                 else
                     alert("Error Deleting System!");
+
+}]);
+
+/***** END SYSTEMS ********/
+
+/****** CaseSpec *****/
+
+// Set of endpoints to handle CaseSpec CRUD
+
+PcSalesApp.factory("caseSpecService", ["$http", function ($http) {
+    var service = {
+        getAll: getAll
+    };
+    return service;
+
+    function getAll() {
+        return $http.get("api/CaseSpec/GetAll");
+    }
+}]);
+
+PcSalesApp.controller("caseSpecListController", ["caseSpecService", function (caseSpecService) {
+
+    var vm = this;
+
+    caseSpecService.getAll()
+        .then(function (response) {
+            console.log("response: ", response);
+            vm.caseSpecs = response.data;
+        });
 
             });
     }
