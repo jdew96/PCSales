@@ -35,7 +35,7 @@ namespace PcSales.Controllers
             return View();
         }
 
-        public IActionResult Update()
+        public IActionResult Update(int id)
         {
             return View();
         }
@@ -64,6 +64,12 @@ namespace PcSales.Controllers
         public ActionResult<IEnumerable<SystemForSale>> GetAll()
         {
              return _systemRepository.GetAll().ToList();
+        }
+
+        [HttpGet("api/[controller]/GetSystem/{id}")]
+        public ActionResult<SystemForSale> GetSystem(int id)
+        {
+            return _systemRepository.GetSystem(id);
         }
 
         [Route("api/[controller]/UpdateSystem/")]

@@ -52,7 +52,14 @@ namespace PcSales.Controllers
         {
             return View();
         }
-        
+
+        // Get all part specs for individual system
+        [Route("api/[controller]/GetSpecsForSystem/{sysId}")]
+        public ActionResult<PartsList> GetSpecsForSystem(int sysId)
+        {
+            return _partSpecRepository.GetPartsForSystem(sysId);
+        }
+
         //CaseSpec
         [Route("api/[controller]/AddCaseSpec/")]
         public ActionResult<int> AddCaseSpec([FromBody] CaseSpec spec)

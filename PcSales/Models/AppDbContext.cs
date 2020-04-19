@@ -18,7 +18,7 @@ namespace PcSales.Models
         public DbSet<RamSpec> RamSpec { get; set; }
         public DbSet<StorageSpec> StorageSpec { get; set; }
         public DbSet<SystemForSale> SystemsForSale { get; set; }
-        public DbSet<SystemToPart> SystemToParts { get; set; }
+        public DbSet<SystemToPart> SystemToPart { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

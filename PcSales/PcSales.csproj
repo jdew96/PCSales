@@ -35,6 +35,5 @@
   <ItemGroup>
     <Folder Include="Models\Interfaces\" />
     <Folder Include="Models\Repositories\" />
-    <Folder Include="Views\CaseSpec\" />
   </ItemGroup>
 </Project>

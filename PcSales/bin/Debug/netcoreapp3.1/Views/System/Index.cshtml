@@ -10,11 +10,13 @@
                 <tr>
                     <th>Name</th>
                     <th>Price</th>
+                    <th>Inventory Count</th>
                 </tr>
             </thead>
-            <tr ng-repeat="sys in vm.systems">
+            <tr ng-repeat="sys in vm.systems" ng-click="vm.update(sys.systemId)">
                 <td class="text-left">{{sys.systemName}}</td>
                 <td class="text-left">${{sys.price}}</td>
+                <td class="text-left">{{sys.inventoryCount}}</td>
             </tr>
         </table>
     </div>

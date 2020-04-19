@@ -5,39 +5,42 @@ namespace PcSales.Models.Interfaces
 {
     public interface IPartSpecRespository
     {
-          //CaseSpec
-          CaseSpec GetCaseSpec(int partNum);
-          IEnumerable<CaseSpec> GetAllCaseSpecs();
-          int AddCaseSpec(CaseSpec spec);
+        // Get all parts for specific system
+        PartsList GetPartsForSystem(int sysId);
 
-          //CpuSpec
-          CpuSpec GetCpuSpec(int partNum);
-          IEnumerable<CpuSpec> GetAllCpuSpecs();
-          int AddCpuSpec(CpuSpec spec);
+        //CaseSpec
+        CaseSpec GetCaseSpec(int partNum);
+        IEnumerable<CaseSpec> GetAllCaseSpecs();
+        int AddCaseSpec(CaseSpec spec);
 
-          //GpuSpec
-          GpuSpec GetGpuSpec(int partNum);
-          IEnumerable<GpuSpec> GetAllGpuSpecs();
-          int AddGpuSpec(GpuSpec spec);
+        //CpuSpec
+        CpuSpec GetCpuSpec(int partNum);
+        IEnumerable<CpuSpec> GetAllCpuSpecs();
+        int AddCpuSpec(CpuSpec spec);
 
-          //MoboSpec
-          MoboSpec GetMoboSpec(int partNum);
-          IEnumerable<MoboSpec> GetAllMoboSpecs();
-          int AddMoboSpec(MoboSpec spec);
+        //GpuSpec
+        GpuSpec GetGpuSpec(int partNum);
+        IEnumerable<GpuSpec> GetAllGpuSpecs();
+        int AddGpuSpec(GpuSpec spec);
 
-          //PsuSpec
-          PsuSpec GetPsuSpec(int partNum);
-          IEnumerable<PsuSpec> GetAllPsuSpecs();
-          int AddPsuSpec(PsuSpec spec);
+        //MoboSpec
+        MoboSpec GetMoboSpec(int partNum);
+        IEnumerable<MoboSpec> GetAllMoboSpecs();
+        int AddMoboSpec(MoboSpec spec);
 
-          //RamSpec
-          RamSpec GetRamSpec(int partNum);
-          IEnumerable<RamSpec> GetAllRamSpecs();
-          int AddRamSpec(RamSpec spec);
+        //PsuSpec
+        PsuSpec GetPsuSpec(int partNum);
+        IEnumerable<PsuSpec> GetAllPsuSpecs();
+        int AddPsuSpec(PsuSpec spec);
 
-          //StorageSpec
-          StorageSpec GetStorageSpec(int partNum);
-          IEnumerable<StorageSpec> GetAllStorageSpecs();
-          int AddStorageSpec(StorageSpec spec);
+        //RamSpec
+        RamSpec GetRamSpec(int partNum);
+        IEnumerable<RamSpec> GetAllRamSpecs();
+        int AddRamSpec(RamSpec spec);
+
+        //StorageSpec
+        StorageSpec GetStorageSpec(int partNum);
+        IEnumerable<StorageSpec> GetAllStorageSpecs();
+        int AddStorageSpec(StorageSpec spec);
      }
 }
