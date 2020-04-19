@@ -4,22 +4,22 @@
     <RestoreSuccess Condition=" '$(RestoreSuccess)' == '' ">True</RestoreSuccess>
     <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
     <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
-    <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
-    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\Tyler\.nuget\packages\;C:\Program Files\dotnet\sdk\NuGetFallbackFolder</NuGetPackageFolders>
+    <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">/Users/jackdew/.nuget/packages/</NuGetPackageRoot>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">/Users/jackdew/.nuget/packages/</NuGetPackageFolders>
     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
-    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">5.5.0</NuGetToolVersion>
+    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">5.4.0</NuGetToolVersion>
   </PropertyGroup>
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="$(NuGetPackageRoot)entityframework\6.4.0\buildTransitive\netcoreapp3.0\EntityFramework.props" Condition="Exists('$(NuGetPackageRoot)entityframework\6.4.0\buildTransitive\netcoreapp3.0\EntityFramework.props')" />
+    <Import Project="$(NuGetPackageRoot)entityframework/6.4.0/buildTransitive/netcoreapp3.0/EntityFramework.props" Condition="Exists('$(NuGetPackageRoot)entityframework/6.4.0/buildTransitive/netcoreapp3.0/EntityFramework.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgNode_js Condition=" '$(PkgNode_js)' == '' ">C:\Users\Tyler\.nuget\packages\node.js\0.12.7</PkgNode_js>
-    <PkgNoGit Condition=" '$(PkgNoGit)' == '' ">C:\Users\Tyler\.nuget\packages\nogit\0.1.0</PkgNoGit>
-    <PkgNpm Condition=" '$(PkgNpm)' == '' ">C:\Users\Tyler\.nuget\packages\npm\3.5.2</PkgNpm>
-    <PkgjQuery Condition=" '$(PkgjQuery)' == '' ">C:\Users\Tyler\.nuget\packages\jquery\3.4.1</PkgjQuery>
-    <PkgEntityFramework Condition=" '$(PkgEntityFramework)' == '' ">C:\Users\Tyler\.nuget\packages\entityframework\6.4.0</PkgEntityFramework>
+    <PkgNode_js Condition=" '$(PkgNode_js)' == '' ">/Users/jackdew/.nuget/packages/node.js/0.12.7</PkgNode_js>
+    <PkgNoGit Condition=" '$(PkgNoGit)' == '' ">/Users/jackdew/.nuget/packages/nogit/0.1.0</PkgNoGit>
+    <PkgNpm Condition=" '$(PkgNpm)' == '' ">/Users/jackdew/.nuget/packages/npm/3.5.2</PkgNpm>
+    <PkgjQuery Condition=" '$(PkgjQuery)' == '' ">/Users/jackdew/.nuget/packages/jquery/3.4.1</PkgjQuery>
+    <PkgEntityFramework Condition=" '$(PkgEntityFramework)' == '' ">/Users/jackdew/.nuget/packages/entityframework/6.4.0</PkgEntityFramework>
   </PropertyGroup>
 </Project>

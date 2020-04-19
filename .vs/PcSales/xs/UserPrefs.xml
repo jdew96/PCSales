@@ -1,38 +1,32 @@
 ﻿<Properties StartupConfiguration="{784974F3-B6C8-4623-9DF5-D09918F5A621}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="PcSales/Models/Repositories/CaseSpecRepository.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="PcSales/appsettings.json">
     <Files>
-      <File FileName="PcSales/Models/Interfaces/ICaseSpecRespository.cs" Line="6" Column="42" IsPinned="True" />
-      <File FileName="PcSales/Views/CaseSpec/Index.cshtml" Line="20" Column="47" />
-      <File FileName="PcSales/wwwroot/js/site.js" Line="151" Column="42" />
-      <File FileName="PcSales/Views/System/Index.cshtml" Line="7" Column="5" />
-      <File FileName="PcSales/Models/Repositories/CaseSpecRepository.cs" Line="36" Column="46" />
-      <File FileName="PcSales/Models/AppDbContext.cs" Line="1" Column="1" />
-      <File FileName="PcSales/Controllers/CaseSpecController.cs" Line="18" Column="76" />
-      <File FileName="PcSales/Models/Repositories/SystemRepository.cs" Line="1" Column="1" />
+      <File FileName="PcSales/Controllers/PartSpecController.cs" Line="156" Column="1" IsPinned="True" />
+      <File FileName="PcSales/Views/Shared/_Layout.cshtml" IsPinned="True" />
+      <File FileName="PcSales/wwwroot/js/site.js" IsPinned="True" />
+      <File FileName="PcSales/Models/Repositories/PartSpecRepository.cs" />
+      <File FileName="PcSales/Models/StorageSpec.cs" />
+      <File FileName="PcSales/Models/Repositories/SystemRepository.cs" />
+      <File FileName="PcSales/Controllers/SystemController.cs" />
+      <File FileName="PcSales/appsettings.json" Line="11" Column="45" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="PcSales" expanded="True">
             <Node name="PcSales" expanded="True">
-              <Node name="Dependencies" expanded="True" />
               <Node name="Controllers" expanded="True" />
               <Node name="Models" expanded="True">
-                <Node name="Interfaces" expanded="True" />
-                <Node name="Repositories" expanded="True">
-                  <Node name="CaseSpecRepository.cs" selected="True" />
-                </Node>
+                <Node name="Repositories" expanded="True" />
               </Node>
               <Node name="Properties" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="CaseSpec" expanded="True" />
                 <Node name="Shared" expanded="True" />
-                <Node name="System" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
-                <Node name="css" expanded="True" />
                 <Node name="js" expanded="True" />
               </Node>
+              <Node name="appsettings.json" selected="True" />
             </Node>
           </Node>
         </State>
