@@ -34,7 +34,7 @@ PcSalesApp.factory("systemService", ["$http", function ($http) {
     }
 
     function getAll() {
-        return $http.get("api/system/GetAll");
+        return $http.get("/api/system/GetAll");
     }
 
     function updateSystem(system) {
@@ -115,16 +115,18 @@ PcSalesApp.controller("systemDeleteController", ["systemService", "window", func
 
     vm.submit = submit;
 
-    function submit(id) {
-        systemService.deleteSystem(id)
-            .then(function (response) {
-                console.log("response: ", response);
-                if (response.data == 1) {
-                    alert("System Deleted successfully!");
-                    $window.location.href = "/";
-                }
-                else
-                    alert("Error Deleting System!");
+     function submit(id) {
+          systemService.deleteSystem(id)
+               .then(function (response) {
+                    console.log("response: ", response);
+                    if (response.data == 1) {
+                         alert("System Deleted successfully!");
+                         $window.location.href = "/";
+                    }
+                    else
+                         alert("Error Deleting System!");
+               });
+     }
 
 }]);
 
@@ -141,7 +143,7 @@ PcSalesApp.factory("caseSpecService", ["$http", function ($http) {
     return service;
 
     function getAll() {
-        return $http.get("api/CaseSpec/GetAll");
+        return $http.get("/api/PartSpec/GetAllCaseSpecs");
     }
 }]);
 
@@ -154,7 +156,157 @@ PcSalesApp.controller("caseSpecListController", ["caseSpecService", function (ca
             console.log("response: ", response);
             vm.caseSpecs = response.data;
         });
+}]);
 
-            });
+/***** END CASESPEC ****/
+
+/***** CPUSpec *********/
+PcSalesApp.factory("cpuSpecService", ["$http", function ($http) {
+    var service = {
+        getAll: getAll
+    };
+    return service;
+
+    function getAll() {
+        return $http.get("/api/PartSpec/GetAllCpuSpecs");
     }
 }]);
+
+PcSalesApp.controller("cpuSpecListController", ["cpuSpecService", function (cpuSpecService) {
+
+    var vm = this;
+
+    cpuSpecService.getAll()
+        .then(function (response) {
+            console.log("response: ", response);
+            vm.cpuSpecs = response.data;
+        });
+}]);
+
+/***** END CPUSPEC ****/
+
+/***** GPUSpec *********/
+PcSalesApp.factory("gpuSpecService", ["$http", function ($http) {
+    var service = {
+        getAll: getAll
+    };
+    return service;
+
+    function getAll() {
+        return $http.get("/api/PartSpec/GetAllGpuSpecs");
+    }
+}]);
+
+PcSalesApp.controller("gpuSpecListController", ["gpuSpecService", function (gpuSpecService) {
+
+    var vm = this;
+
+    gpuSpecService.getAll()
+        .then(function (response) {
+            console.log("response: ", response);
+            vm.gpuSpecs = response.data;
+        });
+}]);
+
+/***** END GPUSPEC ****/
+
+/***** MoboSpec *********/
+PcSalesApp.factory("moboSpecService", ["$http", function ($http) {
+    var service = {
+        getAll: getAll
+    };
+    return service;
+
+    function getAll() {
+        return $http.get("/api/PartSpec/GetAllMoboSpecs");
+    }
+}]);
+
+PcSalesApp.controller("moboSpecListController", ["moboSpecService", function (moboSpecService) {
+
+    var vm = this;
+
+    moboSpecService.getAll()
+        .then(function (response) {
+            console.log("response: ", response);
+            vm.moboSpecs = response.data;
+        });
+}]);
+
+/***** END MoboSpec ****/
+
+/***** PsuSpec *********/
+PcSalesApp.factory("psuSpecService", ["$http", function ($http) {
+    var service = {
+        getAll: getAll
+    };
+    return service;
+
+    function getAll() {
+        return $http.get("/api/PartSpec/GetAllPsuSpecs");
+    }
+}]);
+
+PcSalesApp.controller("psuSpecListController", ["psuSpecService", function (psuSpecService) {
+
+    var vm = this;
+
+    psuSpecService.getAll()
+        .then(function (response) {
+            console.log("response: ", response);
+            vm.psuSpecs = response.data;
+        });
+}]);
+/***** END PsuSpec ****/
+
+/***** RamSpec *********/
+PcSalesApp.factory("ramSpecService", ["$http", function ($http) {
+    var service = {
+        getAll: getAll
+    };
+    return service;
+
+    function getAll() {
+        return $http.get("/api/PartSpec/GetAllRamSpecs");
+    }
+}]);
+
+PcSalesApp.controller("ramSpecListController", ["ramSpecService", function (ramSpecService) {
+
+    var vm = this;
+
+    ramSpecService.getAll()
+        .then(function (response) {
+            console.log("response: ", response);
+            vm.ramSpecs = response.data;
+        });
+}]);
+
+/***** END RamSpec ****/
+
+
+/***** StorageSpec *********/
+PcSalesApp.factory("storageSpecService", ["$http", function ($http) {
+    var service = {
+        getAll: getAll
+    };
+    return service;
+
+    function getAll() {
+        return $http.get("/api/PartSpec/GetAllStorageSpecs");
+    }
+}]);
+
+PcSalesApp.controller("storageSpecListController", ["storageSpecService", function (storageSpecService) {
+
+    var vm = this;
+
+    storageSpecService.getAll()
+        .then(function (response) {
+            console.log("response: ", response);
+            vm.storageSpecs = response.data;
+        });
+}]);
+
+/***** END StorageSpec ****/
+

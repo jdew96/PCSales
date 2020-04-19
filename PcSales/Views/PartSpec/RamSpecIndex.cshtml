@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "RAM Spec Listing";
+}
+
+<div ng-app="PcSalesApp" ng-controller="ramSpecListController as vm">
+    <div class="text-center">
+        <table ng-table="vm.psuSpecs" class="table table-condensed table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Part Number</th>
+                    <th>Part Name</th>
+                    <th>Manufacturer</th>
+                    <th>Memory Type</th>
+                    <th>Memory Modules</th>
+                    <th>Memory Total</th>
+                    <th>Clock Speed</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="spec in vm.ramSpecs">
+                <td class="text-left">{{spec.partNum}}</td>
+                <td class="text-left">{{spec.partName}}</td>
+                <td class="text-left">{{spec.manufacturer}}</td>
+                <td class="text-left">{{spec.memoryType}}</td>
+                <td class="text-left">{{spec.memoryModules}}</td>
+                <td class="text-left">{{spec.memoryTotal}}</td>
+                <td class="text-left">{{spec.clockSpeed}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.js"></script>
+<script type="text/javascript" src="js/site.js"></script>

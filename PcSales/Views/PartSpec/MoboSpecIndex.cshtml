@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Mobo Spec Listing";
+}
+
+<div ng-app="PcSalesApp" ng-controller="moboSpecListController as vm">
+    <div class="text-center">
+        <table ng-table="vm.moboSpecs" class="table table-condensed table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Part Number</th>
+                    <th>Part Name</th>
+                    <th>Manufacturer</th>
+                    <th>Form Factor</th>
+                    <th>Sata Slots</th>
+                    <th>Socket</th>
+                    <th>Memory Max</th>
+                    <th>Memory Type</th>
+                    <th>Memory Slots</th>
+                    <th>M2 Slots</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="spec in vm.moboSpecs">
+                <td class="text-left">{{spec.partNum}}</td>
+                <td class="text-left">{{spec.partName}}</td>
+                <td class="text-left">{{spec.manufacturer}}</td>
+                <td class="text-left">{{spec.formFactor}}</td>
+                <td class="text-left">{{spec.sataSlots}}</td>
+                <td class="text-left">{{spec.socket}}</td>
+                <td class="text-left">{{spec.memoryMax}}</td>
+                <td class="text-left">{{spec.memoryType}}</td>
+                <td class="text-left">{{spec.memorySlots}}</td>
+                <td class="text-left">{{spec.m2Slots}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.js"></script>
+<script type="text/javascript" src="js/site.js"></script>

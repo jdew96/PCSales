@@ -110,17 +110,23 @@ PcSalesApp.controller("systemAddController", ["systemService", "$window", functi
 
 // Controller for delete system page
 
-PcSalesApp.controller("systemDeleteController", ["systemService", function (systemService) {
+PcSalesApp.controller("systemDeleteController", ["systemService", "window", function (systemService) {
     var vm = this;
 
-    // Delete system with systemId 4
+    vm.submit = submit;
 
-    systemService.deleteSystem(14)
-        .then(function (response) {
-            console.log("response: ", response);
-        })
-    
-    
+     function submit(id) {
+          systemService.deleteSystem(id)
+               .then(function (response) {
+                    console.log("response: ", response);
+                    if (response.data == 1) {
+                         alert("System Deleted successfully!");
+                         $window.location.href = "/";
+                    }
+                    else
+                         alert("Error Deleting System!");
+               });
+     }
 
 }]);
 
@@ -150,5 +156,4 @@ PcSalesApp.controller("caseSpecListController", ["caseSpecService", function (ca
             console.log("response: ", response);
             vm.caseSpecs = response.data;
         });
-
 }]);
