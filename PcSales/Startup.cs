@@ -36,7 +36,7 @@ namespace PcSales
              
             services.AddControllersWithViews();
             services.AddScoped<ISystemRepository, SystemRepository>();
-            services.AddScoped<IPartSpecRespository, CaseSpecRepository>(); // Need this line for every new repository type
+            services.AddScoped<IPartSpecRespository, PartSpecRepository>(); // Need this line for every new repository type
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

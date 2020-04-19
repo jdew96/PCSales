@@ -1,0 +1,35 @@
+﻿@{
+     ViewData["Title"] = "Cpu Spec Listing";
+}
+
+<div ng-app="PcSalesApp" ng-controller="cpuSpecListController as vm">
+     <div class="text-center">
+          <table ng-table="vm.cpuSpecs" class="table table-condensed table-bordered table-striped">
+               <thead>
+                    <tr>
+                         <th>Part Number</th>
+                         <th>Part Name</th>
+                         <th>Manufacturer</th>
+                         <th>Cores Count</th>
+                         <th>TDP</th>
+                         <th>Socket</th>
+                         <th>Clock Speed</th>
+                    </tr>
+               </thead>
+               <tr ng-repeat="spec in vm.cpuSpecs">
+                    <td class="text-left">{{spec.partNum}}</td>
+                    <td class="text-left">{{spec.partName}}</td>
+                    <td class="text-left">{{spec.manufacturer}}</td>
+                    <td class="text-left">{{spec.coresCount}}</td>
+                    <td class="text-left">{{spec.tdp}}</td>
+                    <td class="text-left">{{spec.socket}}</td>
+                    <td class="text-left">{{spec.clockSpeed}}</td>
+               </tr>
+          </table>
+     </div>
+</div>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.js"></script>
+<script type="text/javascript" src="js/site.js"></script>
