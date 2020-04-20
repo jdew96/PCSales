@@ -4,10 +4,23 @@
 
     <div ng-app="PcSalesApp" ng-controller="systemUpdateController as vm">
         <form novalidate class="simple-form">
-            <label>System Name: <input type="text" ng-model="vm.system.systemName" /></label><br />
-            <label>Price: <input type="number" ng-model="vm.system.price" /></label><br />
-            <label>Inventory Count: <input type="number" ng-model="vm.system.inventoryCount" /></label><br />
+            <div class="block">
+                <label style="display:inline-block; text-align:right; width:140px">System Name:</label>
+                <input type="text" ng-model="vm.system.systemName" />
+            </div>
+            <div class="block">
+                <label style="display:inline-block; text-align:right; width:140px">Price:</label>
+                <input type="number" ng-model="vm.system.price" />
+            </div>
+            <div class="block">
+                <label style="display:inline-block; text-align:right; width:140px">Inventory Count: </label>
+                <input type="number" ng-model="vm.system.inventoryCount" />
+            </div>
         </form>
+
+        <div>
+            <h2 style="display:inline-block">Selected Parts List</h2>
+        </div>
 
         <table ng-table="vm.parts" class="table table-condensed table-bordered table-striped">
             <thead>
@@ -15,14 +28,35 @@
                     <th>Part Number</th>
                     <th>Part Name</th>
                     <th>Manufacturer</th>
-                    <th>Delete</th>
+                    <th>Remove from System</th>
                 </tr>
             </thead>
             <tr ng-repeat="part in vm.parts">
                 <td class="text-left">{{part.partNum}}</td>
                 <td class="text-left">{{part.partName}}</td>
                 <td class="text-left">{{part.manufacturer}}</td>
-                <td class="text-left"><input type="checkbox" ng-click="vm.removePart(part.partNum)"/></td>
+                <td class="text-left"><input type="checkbox" ng-click="vm.removePart(part)" /></td>
+            </tr>
+        </table>
+
+        <div>
+            <h2 style="display:inline-block">Potential Parts List</h2>
+        </div>
+
+        <table ng-table="vm.potentialParts" class="table table-condensed table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Part Number</th>
+                    <th>Part Name</th>
+                    <th>Manufacturer</th>
+                    <th>Add to System</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="part in vm.potentialParts">
+                <td class="text-left">{{part.partNum}}</td>
+                <td class="text-left">{{part.partName}}</td>
+                <td class="text-left">{{part.manufacturer}}</td>
+                <td class="text-left"><input type="checkbox" ng-click="vm.addPart(part)" /></td>
             </tr>
         </table>
     </div>

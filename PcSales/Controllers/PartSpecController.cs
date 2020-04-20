@@ -55,10 +55,18 @@ namespace PcSales.Controllers
 
         // Get all part specs for individual system
         [Route("api/[controller]/GetSpecsForSystem/{sysId}")]
-        public ActionResult<PartsList> GetSpecsForSystem(int sysId)
+        public ActionResult<SystemPartsList> GetSpecsForSystem(int sysId)
         {
             return _partSpecRepository.GetPartsForSystem(sysId);
         }
+
+        // Get all parts which could potentially be added to system
+        [Route("api/[controller]/GetPotentialParts/{sysId}")]
+        public ActionResult<PartsList> GetPotentialParts(int sysId)
+        {
+            return _partSpecRepository.GetPotentialParts(sysId);
+        }
+        
 
         //CaseSpec
         [Route("api/[controller]/AddCaseSpec/")]

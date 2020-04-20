@@ -82,7 +82,9 @@ PcSalesApp.controller("systemUpdateController", ["systemService", "partSpecServi
     var vm = this;
     vm.system = null;
     vm.removePart = removePart;
+    vm.addPart = addPart;
     vm.parts = [];
+    vm.potentialParts = [];
 
     function getUrlVars() {
         var vars = {};
@@ -105,12 +107,31 @@ PcSalesApp.controller("systemUpdateController", ["systemService", "partSpecServi
             angular.forEach(response.data, function (value, key) {
                 vm.parts.push(value);
             });
+            console.log(vm.parts);
         });
 
-    function removePart(partNum) {
-        vm.parts = vm.parts.filter(function (el) { return el.partNum != partNum; }); // Remove this part from list 
+    partSpecService.getAllPotentialParts(id)
+        .then(function (response) {
+            angular.forEach(response.data, function (value, key) {
+                if (value != []) { // only add items that aren't empty list 
+                    angular.forEach(value, function (part) {
+                        vm.potentialParts.push(part);
+                    });
+                }
+            });
+        });
+
+    function removePart(part) {
+        vm.parts = vm.parts.filter(function (el) { return el.partNum != part.partNum; }); // Remove this part from list
+        vm.potentialParts.push(part); // Add to potential parts list
     }
 
+    function addPart(part) {
+        vm.parts.push(part); // Add part to list
+
+        // Remove part from potential parts list 
+        vm.potentialParts = vm.potentialParts.filter(function (el) { return el.partNum != part.partNum; }); 
+    }
 
 }]);
 
@@ -173,7 +194,8 @@ PcSalesApp.factory("partSpecService", ["$http", function ($http) {
         getAllPsuSpecs: getAllPsuSpecs,
         getAllRamSpecs: getAllRamSpecs,
         getAllStorageSpecs: getAllStorageSpecs,
-        getAllPartsForSystem: getAllPartsForSystem
+        getAllPartsForSystem: getAllPartsForSystem,
+        getAllPotentialParts: getAllPotentialParts
     };
     return service;
 
@@ -207,6 +229,10 @@ PcSalesApp.factory("partSpecService", ["$http", function ($http) {
 
     function getAllPartsForSystem(sysId) {
         return $http.get("/api/PartSpec/GetSpecsForSystem/" + sysId);
+    }
+
+    function getAllPotentialParts(sysId) {
+        return $http.get("/api/PartSpec/getPotentialParts/" + sysId);
     }
 }]);
 

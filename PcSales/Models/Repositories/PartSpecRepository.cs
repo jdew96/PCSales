@@ -21,10 +21,10 @@ namespace PcSales.Models.Repositories
         }
 
         // Get all parts for specific system
-        public PartsList GetPartsForSystem(int sysId)
+        public SystemPartsList GetPartsForSystem(int sysId)
         {
             List<SystemToPart> stp = _context.SystemToPart.Where(s => s.SystemId == sysId).ToList();
-            PartsList parts = new PartsList();
+            SystemPartsList parts = new SystemPartsList();
 
             // Match up parts via system id and return full list 
             foreach(var part in stp)
@@ -67,7 +67,27 @@ namespace PcSales.Models.Repositories
             return parts;
         }
 
-        public IEnumerable<CaseSpec> GetAllCaseSpecs()
+        // Get all specs which could potentially be added to system
+        public PartsList GetPotentialParts(int sysId)
+        {
+            SystemPartsList chosenParts = GetPartsForSystem(sysId);
+
+            // All parts not currently chosen are options
+            PartsList potentialParts = new PartsList();
+
+            potentialParts.CaseSpecs = GetAllCaseSpecs().Where(c => c.PartNum != chosenParts.selectedCase.PartNum).ToList();
+            potentialParts.CpuSpecs = GetAllCpuSpecs().Where(c => c.PartNum != chosenParts.selectedCpu.PartNum).ToList();
+            potentialParts.GpuSpecs = GetAllGpuSpecs().Where(g => g.PartNum != chosenParts.selectedGpu.PartNum).ToList();
+            potentialParts.MoboSpecs = GetAllMoboSpecs().Where(m => m.PartNum != chosenParts.selectedMobo.PartNum).ToList();
+            potentialParts.PsuSpecs = GetAllPsuSpecs().Where(p => p.PartNum != chosenParts.selectedPsu.PartNum).ToList();
+            potentialParts.RamSpecs = GetAllRamSpecs().Where(r => r.PartNum != chosenParts.selectedRam.PartNum).ToList();
+            potentialParts.StorageSpecs = GetAllStorageSpecs().Where(s => s.PartNum != chosenParts.selectedStorage.PartNum).ToList();
+
+            return potentialParts;
+        }
+
+
+        public List<CaseSpec> GetAllCaseSpecs()
         {
             List<CaseSpec> specs = _context.CaseSpec.ToList();
             return specs;
@@ -86,7 +106,7 @@ namespace PcSales.Models.Repositories
         }
 
 
-        public IEnumerable<CpuSpec> GetAllCpuSpecs()
+        public List<CpuSpec> GetAllCpuSpecs()
         {
             List<CpuSpec> specs = _context.CpuSpec.ToList();
             return specs;
@@ -105,7 +125,7 @@ namespace PcSales.Models.Repositories
         }
 
 
-        public IEnumerable<GpuSpec> GetAllGpuSpecs()
+        public List<GpuSpec> GetAllGpuSpecs()
         {
             List<GpuSpec> specs = _context.GpuSpec.ToList();
             return specs;
@@ -124,7 +144,7 @@ namespace PcSales.Models.Repositories
         }
 
 
-        public IEnumerable<MoboSpec> GetAllMoboSpecs()
+        public List<MoboSpec> GetAllMoboSpecs()
         {
             List<MoboSpec> specs = _context.MoboSpec.ToList();
             return specs;
@@ -143,7 +163,7 @@ namespace PcSales.Models.Repositories
         }
 
 
-        public IEnumerable<PsuSpec> GetAllPsuSpecs()
+        public List<PsuSpec> GetAllPsuSpecs()
         {
             List<PsuSpec> specs = _context.PsuSpec.ToList();
             return specs;
@@ -162,7 +182,7 @@ namespace PcSales.Models.Repositories
         }
 
 
-        public IEnumerable<RamSpec> GetAllRamSpecs()
+        public List<RamSpec> GetAllRamSpecs()
         {
             List<RamSpec> specs = _context.RamSpec.ToList();
             return specs;
@@ -181,7 +201,7 @@ namespace PcSales.Models.Repositories
         }
 
 
-        public IEnumerable<StorageSpec> GetAllStorageSpecs()
+        public List<StorageSpec> GetAllStorageSpecs()
         {
             List<StorageSpec> specs = _context.StorageSpec.ToList();
             return specs;
