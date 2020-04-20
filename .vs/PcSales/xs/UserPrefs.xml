@@ -1,22 +1,19 @@
 ﻿<Properties StartupConfiguration="{784974F3-B6C8-4623-9DF5-D09918F5A621}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="PcSales/Controllers/SystemController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="PcSales/Views/System/Index.cshtml">
     <Files>
-      <File FileName="PcSales/Controllers/PartSpecController.cs" Line="57" Column="17" />
+      <File FileName="PcSales/Controllers/PartSpecController.cs" Line="60" Column="1" />
       <File FileName="PcSales/Models/Interfaces/IPartSpecRespository.cs" Line="12" Column="43" />
-      <File FileName="PcSales/Models/Repositories/PartSpecRepository.cs" Line="24" Column="52" />
-      <File FileName="PcSales/wwwroot/js/site.js" Line="202" Column="28" />
-      <File FileName="PcSales/Views/Shared/_Layout.cshtml" Line="21" Column="27" />
-      <File FileName="PcSales/Models/AppDbContext.cs" Line="21" Column="48" />
-      <File FileName="PcSales/Controllers/SystemController.cs" Line="1" Column="1" />
+      <File FileName="PcSales/Models/Repositories/PartSpecRepository.cs" Line="67" Column="1" />
+      <File FileName="PcSales/wwwroot/js/site.js" Line="99" Column="39" />
+      <File FileName="PcSales/Views/System/Update.cshtml" Line="13" Column="62" />
+      <File FileName="PcSales/Views/System/Index.cshtml" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="PcSales" expanded="True">
             <Node name="PcSales" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="SystemController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="Models" expanded="True">
                 <Node name="Interfaces" expanded="True" />
                 <Node name="Repositories" expanded="True" />
@@ -25,7 +22,9 @@
               <Node name="Views" expanded="True">
                 <Node name="PartSpec" expanded="True" />
                 <Node name="Shared" expanded="True" />
-                <Node name="System" expanded="True" />
+                <Node name="System" expanded="True">
+                  <Node name="Index.cshtml" selected="True" />
+                </Node>
               </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="css" expanded="True" />
@@ -45,9 +44,6 @@
       <Breakpoint file="/Users/jackdew/Desktop/PcSales/PcSales/Models/Repositories/CaseSpecRepository.cs" relfile="PcSales/Models/Repositories/CaseSpecRepository.cs" line="38" column="1" />
       <Breakpoint file="/Users/jackdew/Desktop/PcSales/PcSales/Models/Repositories/CaseSpecRepository.cs" relfile="PcSales/Models/Repositories/CaseSpecRepository.cs" line="39" column="1" />
       <Breakpoint file="/Users/jackdew/Desktop/PcSales/PcSales/Controllers/CaseSpecController.cs" relfile="PcSales/Controllers/CaseSpecController.cs" line="60" column="1" />
-      <Breakpoint file="/Users/jackdew/Desktop/PcSales/PcSales/Models/Repositories/PartSpecRepository.cs" relfile="PcSales/Models/Repositories/PartSpecRepository.cs" line="67" column="1" />
-      <Breakpoint file="/Users/jackdew/Desktop/PcSales/PcSales/Models/Repositories/PartSpecRepository.cs" relfile="PcSales/Models/Repositories/PartSpecRepository.cs" line="32" column="1" />
-      <Breakpoint file="/Users/jackdew/Desktop/PcSales/PcSales/Models/Repositories/PartSpecRepository.cs" relfile="PcSales/Models/Repositories/PartSpecRepository.cs" line="27" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

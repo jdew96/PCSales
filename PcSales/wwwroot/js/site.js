@@ -81,6 +81,8 @@ PcSalesApp.controller("systemListController", ["$window", "systemService",functi
 PcSalesApp.controller("systemUpdateController", ["systemService", "partSpecService", function (systemService, partSpecService) {
     var vm = this;
     vm.system = null;
+    vm.removePart = removePart;
+    vm.parts = [];
 
     function getUrlVars() {
         var vars = {};
@@ -91,18 +93,23 @@ PcSalesApp.controller("systemUpdateController", ["systemService", "partSpecServi
     }
 
     var id = getUrlVars()["id"];
-    console.log("id: ", id);
 
     systemService.getSystem(id)
         .then(function (response) {
-            console.log("response.data: ", response.data);
             vm.system = response.data;
         });
 
     partSpecService.getAllPartsForSystem(id)
         .then(function (response) {
-            console.log("parts: ", response.data);
+            // Add each part to array of parts
+            angular.forEach(response.data, function (value, key) {
+                vm.parts.push(value);
+            });
         });
+
+    function removePart(partNum) {
+        vm.parts = vm.parts.filter(function (el) { return el.partNum != partNum; }); // Remove this part from list 
+    }
 
 
 }]);

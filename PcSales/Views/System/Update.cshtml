@@ -2,14 +2,30 @@
     ViewData["Title"] = "Update System";
 }
 
-<div ng-app="PcSalesApp" ng-controller="systemUpdateController as vm">
-    <form novalidate class="simple-form">
-        <label>System Name: <input type="text" ng-model="vm.system.systemName" /></label><br />
-        <label>Price: <input type="number" ng-model="vm.system.price" /></label><br />
-        <label>Inventory Count: <input type="number" ng-model="vm.system.inventoryCount" /></label><br />
-        <input type="submit" ng-click="vm.submit()" value="Submit" />
-    </form>
-</div>
+    <div ng-app="PcSalesApp" ng-controller="systemUpdateController as vm">
+        <form novalidate class="simple-form">
+            <label>System Name: <input type="text" ng-model="vm.system.systemName" /></label><br />
+            <label>Price: <input type="number" ng-model="vm.system.price" /></label><br />
+            <label>Inventory Count: <input type="number" ng-model="vm.system.inventoryCount" /></label><br />
+        </form>
+
+        <table ng-table="vm.parts" class="table table-condensed table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Part Number</th>
+                    <th>Part Name</th>
+                    <th>Manufacturer</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="part in vm.parts">
+                <td class="text-left">{{part.partNum}}</td>
+                <td class="text-left">{{part.partName}}</td>
+                <td class="text-left">{{part.manufacturer}}</td>
+                <td class="text-left"><input type="checkbox" ng-click="vm.removePart(part.partNum)"/></td>
+            </tr>
+        </table>
+    </div>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
