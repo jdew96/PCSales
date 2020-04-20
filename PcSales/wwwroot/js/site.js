@@ -4,19 +4,21 @@
 // Write your JavaScript code.
 
 // Define app module which will be used to instantiate all controllers and services
+
 var PcSalesApp = angular.module("PcSalesApp", []);
 
 
 // Set of endpoints to handle system data CRUD
 
 PcSalesApp.factory("systemService", ["$http", function ($http) {
+    // List of functions, seperated by comma
     var service = {
         addSystem: addSystem,
         deleteSystem: deleteSystem,
         getAll: getAll,
         getSystem: getSystem,
-        updateSystem: updateSystem
-        // List of functions, seperated by comma
+        updateSystem: updateSystem,
+        updatePartsList: updatePartsList
     };
     return service;
 
@@ -47,11 +49,22 @@ PcSalesApp.factory("systemService", ["$http", function ($http) {
         return $.ajax({
             type: 'POST',
             url: "/api/system/UpdateSystem/",
-            data: system,
+            data: JSON.stringify(system),
             contentType: 'application/json; charset=utf-8',
             dataType: 'json'
         });
-       
+    }
+
+    function updatePartsList(parts) {
+        console.log("parts: ", parts);
+        return $.ajax({
+            type: 'POST',
+            url: "/api/system/UpdatePartsList/",
+            data: JSON.stringify(parts),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json'
+        });
+
     }
 
 }]);
@@ -65,7 +78,6 @@ PcSalesApp.controller("systemListController", ["$window", "systemService",functi
 
     systemService.getAll()
         .then(function (response) {
-            console.log("all systems: ", response);
             vm.systems = response.data;
         });
 
@@ -78,11 +90,16 @@ PcSalesApp.controller("systemListController", ["$window", "systemService",functi
 
 // Controller for update system page
 
-PcSalesApp.controller("systemUpdateController", ["systemService", "partSpecService", function (systemService, partSpecService) {
+PcSalesApp.controller("systemUpdateController", ["$window", "systemService", "partSpecService", function ($window, systemService, partSpecService) {
     var vm = this;
-    vm.system = null;
+    
+    // Declare functions
     vm.removePart = removePart;
     vm.addPart = addPart;
+    vm.submit = submit;
+
+    // Declare data
+    vm.system = null;
     vm.parts = [];
     vm.potentialParts = [];
 
@@ -103,11 +120,25 @@ PcSalesApp.controller("systemUpdateController", ["systemService", "partSpecServi
 
     partSpecService.getAllPartsForSystem(id)
         .then(function (response) {
-            // Add each part to array of parts
+            // Add each part to array of parts, with partTypeId
             angular.forEach(response.data, function (value, key) {
+                if (key == "selectedCpu")
+                    value.partTypeId = 0;
+                else if (key == "selectedMobo")
+                    value.partTypeId = 1;
+                else if (key == "selectedRam")
+                    value.partTypeId = 2;
+                else if (key == "selectedCase")
+                    value.partTypeId = 3;
+                else if (key == "selectedGpu")
+                    value.partTypeId = 4;
+                else if (key == "selectedPsu")
+                    value.partTypeId = 5;
+                else if (key == "selectedStorage")
+                    value.partTypeId = 6;
+                    
                 vm.parts.push(value);
             });
-            console.log(vm.parts);
         });
 
     partSpecService.getAllPotentialParts(id)
@@ -115,6 +146,22 @@ PcSalesApp.controller("systemUpdateController", ["systemService", "partSpecServi
             angular.forEach(response.data, function (value, key) {
                 if (value != []) { // only add items that aren't empty list 
                     angular.forEach(value, function (part) {
+                        // Add partTypeId
+                        if (key == "selectedCpu")
+                            part.partTypeId = 0;
+                        else if (key == "selectedMobo")
+                            part.partTypeId = 1;
+                        else if (key == "selectedRam")
+                            part.partTypeId = 2;
+                        else if (key == "selectedCase")
+                            part.partTypeId = 3;
+                        else if (key == "selectedGpu")
+                            part.partTypeId = 4;
+                        else if (key == "selectedPsu")
+                            part.partTypeId = 5;
+                        else if (key == "selectedStorage")
+                            part.partTypeId = 6;
+
                         vm.potentialParts.push(part);
                     });
                 }
@@ -131,6 +178,28 @@ PcSalesApp.controller("systemUpdateController", ["systemService", "partSpecServi
 
         // Remove part from potential parts list 
         vm.potentialParts = vm.potentialParts.filter(function (el) { return el.partNum != part.partNum; }); 
+    }
+
+    function submit() {
+        vm.partsToSubmit = {parts: []};
+        angular.forEach(vm.parts, function (value, key) {
+            vm.partsToSubmit.parts.push({ partNumber: value.partNum, partTypeId: value.partTypeId, systemId:  parseInt(id)});
+        });
+        
+        systemService.updatePartsList(vm.partsToSubmit)
+            .then(function (response) {
+                if (response < 0) // Error
+                    alert("Error submitting parts form!");
+            });
+        systemService.updateSystem(vm.system)
+            .then(function (response) {
+                if (response == -1)
+                    alert("Error submitting system form!");
+                else {
+                    alert("Form submitted successfully!");
+                    $window.location.href = "/";
+                }
+            });
     }
 
 }]);
@@ -153,7 +222,7 @@ PcSalesApp.controller("systemAddController", ["systemService", "$window", functi
                     $window.location.href = "/";
                 }
                 else
-                    alert("Error submitted form!");
+                    alert("Error submitting form!");
 
             });
     }

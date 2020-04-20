@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PcSales.Models;
 using PcSales.Models.Interfaces;
+using static PcSales.Models.Repositories.SystemRepository;
 
 namespace PcSales.Controllers
 {
@@ -76,6 +77,13 @@ namespace PcSales.Controllers
         public ActionResult<int> UpdateSystem([FromBody] SystemForSale system)
         {
             return _systemRepository.Update(system);
+        }
+
+        // Modify parts attached to system
+        [Route("api/[controller]/UpdatePartsList/")]
+        public ActionResult<int> UpdatePartsList([FromBody] CompositeList partsToSubmit)
+        {
+            return _systemRepository.UpdatePartsList(partsToSubmit);
         }
 
 

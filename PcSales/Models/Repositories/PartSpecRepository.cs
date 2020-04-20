@@ -99,13 +99,6 @@ namespace PcSales.Models.Repositories
         }
 
         //CpuSpec
-        public int AddCpuSpec(CpuSpec spec)
-        {
-            _context.CpuSpec.Add(spec);
-            return _context.SaveChanges();
-        }
-
-
         public List<CpuSpec> GetAllCpuSpecs()
         {
             List<CpuSpec> specs = _context.CpuSpec.ToList();
@@ -118,13 +111,6 @@ namespace PcSales.Models.Repositories
         }
 
         //GpuSpec
-        public int AddGpuSpec(GpuSpec spec)
-        {
-            _context.GpuSpec.Add(spec);
-            return _context.SaveChanges();
-        }
-
-
         public List<GpuSpec> GetAllGpuSpecs()
         {
             List<GpuSpec> specs = _context.GpuSpec.ToList();
@@ -137,13 +123,6 @@ namespace PcSales.Models.Repositories
         }
 
         //MoboSpec
-        public int AddMoboSpec(MoboSpec spec)
-        {
-            _context.MoboSpec.Add(spec);
-            return _context.SaveChanges();
-        }
-
-
         public List<MoboSpec> GetAllMoboSpecs()
         {
             List<MoboSpec> specs = _context.MoboSpec.ToList();
@@ -156,13 +135,6 @@ namespace PcSales.Models.Repositories
         }
 
         //PsuSpec
-        public int AddPsuSpec(PsuSpec spec)
-        {
-            _context.PsuSpec.Add(spec);
-            return _context.SaveChanges();
-        }
-
-
         public List<PsuSpec> GetAllPsuSpecs()
         {
             List<PsuSpec> specs = _context.PsuSpec.ToList();
@@ -175,13 +147,6 @@ namespace PcSales.Models.Repositories
         }
 
         //RamSpec
-        public int AddRamSpec(RamSpec spec)
-        {
-            _context.RamSpec.Add(spec);
-            return _context.SaveChanges();
-        }
-
-
         public List<RamSpec> GetAllRamSpecs()
         {
             List<RamSpec> specs = _context.RamSpec.ToList();
@@ -194,13 +159,6 @@ namespace PcSales.Models.Repositories
         }
 
         //StorageSpec
-        public int AddStorageSpec(StorageSpec spec)
-        {
-            _context.StorageSpec.Add(spec);
-            return _context.SaveChanges();
-        }
-
-
         public List<StorageSpec> GetAllStorageSpecs()
         {
             List<StorageSpec> specs = _context.StorageSpec.ToList();
