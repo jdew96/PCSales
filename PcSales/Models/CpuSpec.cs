@@ -10,5 +10,6 @@ namespace PcSales.Models
         public int TDP { get; set; } 
         public string Socket { get; set; }
         public double ClockSpeed { get; set; }
+        public int PartTypeId { get; set; }
     }
 }

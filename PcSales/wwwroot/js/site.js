@@ -122,22 +122,9 @@ PcSalesApp.controller("systemUpdateController", ["$window", "systemService", "pa
         .then(function (response) {
             // Add each part to array of parts, with partTypeId
             angular.forEach(response.data, function (value, key) {
-                if (key == "selectedCpu")
-                    value.partTypeId = 0;
-                else if (key == "selectedMobo")
-                    value.partTypeId = 1;
-                else if (key == "selectedRam")
-                    value.partTypeId = 2;
-                else if (key == "selectedCase")
-                    value.partTypeId = 3;
-                else if (key == "selectedGpu")
-                    value.partTypeId = 4;
-                else if (key == "selectedPsu")
-                    value.partTypeId = 5;
-                else if (key == "selectedStorage")
-                    value.partTypeId = 6;
-                    
-                vm.parts.push(value);
+                if(value != null)
+                    vm.parts.push(value);
+                
             });
         });
 
@@ -146,22 +133,6 @@ PcSalesApp.controller("systemUpdateController", ["$window", "systemService", "pa
             angular.forEach(response.data, function (value, key) {
                 if (value != []) { // only add items that aren't empty list 
                     angular.forEach(value, function (part) {
-                        // Add partTypeId
-                        if (key == "selectedCpu")
-                            part.partTypeId = 0;
-                        else if (key == "selectedMobo")
-                            part.partTypeId = 1;
-                        else if (key == "selectedRam")
-                            part.partTypeId = 2;
-                        else if (key == "selectedCase")
-                            part.partTypeId = 3;
-                        else if (key == "selectedGpu")
-                            part.partTypeId = 4;
-                        else if (key == "selectedPsu")
-                            part.partTypeId = 5;
-                        else if (key == "selectedStorage")
-                            part.partTypeId = 6;
-
                         vm.potentialParts.push(part);
                     });
                 }

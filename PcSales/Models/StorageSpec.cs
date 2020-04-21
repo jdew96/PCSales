@@ -9,5 +9,6 @@ namespace PcSales.Models
         public string Interface { get; set; }
         public int Capacity { get; set; }
         public string Type { get; set; }
+        public int PartTypeId { get; set; }
     }
 }

@@ -13,5 +13,6 @@ namespace PcSales.Models
         public string MemoryType { get; set; }
         public int MemorySlots { get; set; }
         public int M2Slots { get; set; }
+        public int PartTypeId { get; set; }
     }
 }

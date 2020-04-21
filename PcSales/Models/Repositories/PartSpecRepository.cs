@@ -75,13 +75,28 @@ namespace PcSales.Models.Repositories
             // All parts not currently chosen are options
             PartsList potentialParts = new PartsList();
 
-            potentialParts.CaseSpecs = GetAllCaseSpecs().Where(c => c.PartNum != chosenParts.selectedCase.PartNum).ToList();
-            potentialParts.CpuSpecs = GetAllCpuSpecs().Where(c => c.PartNum != chosenParts.selectedCpu.PartNum).ToList();
-            potentialParts.GpuSpecs = GetAllGpuSpecs().Where(g => g.PartNum != chosenParts.selectedGpu.PartNum).ToList();
-            potentialParts.MoboSpecs = GetAllMoboSpecs().Where(m => m.PartNum != chosenParts.selectedMobo.PartNum).ToList();
-            potentialParts.PsuSpecs = GetAllPsuSpecs().Where(p => p.PartNum != chosenParts.selectedPsu.PartNum).ToList();
-            potentialParts.RamSpecs = GetAllRamSpecs().Where(r => r.PartNum != chosenParts.selectedRam.PartNum).ToList();
-            potentialParts.StorageSpecs = GetAllStorageSpecs().Where(s => s.PartNum != chosenParts.selectedStorage.PartNum).ToList();
+            // If there are parts registered, select all others
+            // If not, all parts are potential 
+            potentialParts.CaseSpecs = chosenParts.selectedCase != null ?
+                GetAllCaseSpecs().Where(c => c.PartNum != chosenParts.selectedCase.PartNum).ToList() : GetAllCaseSpecs();
+
+            potentialParts.CpuSpecs = chosenParts.selectedCpu != null ?
+                GetAllCpuSpecs().Where(c => c.PartNum != chosenParts.selectedCpu.PartNum).ToList() : potentialParts.CpuSpecs = GetAllCpuSpecs();
+
+            potentialParts.GpuSpecs = chosenParts.selectedGpu != null ?
+                GetAllGpuSpecs().Where(g => g.PartNum != chosenParts.selectedGpu.PartNum).ToList() : GetAllGpuSpecs();
+
+            potentialParts.MoboSpecs = chosenParts.selectedMobo != null ?
+                    GetAllMoboSpecs().Where(m => m.PartNum != chosenParts.selectedMobo.PartNum).ToList(): GetAllMoboSpecs();
+
+            potentialParts.PsuSpecs = chosenParts.selectedPsu != null ?
+                GetAllPsuSpecs().Where(p => p.PartNum != chosenParts.selectedPsu.PartNum).ToList() : GetAllPsuSpecs();
+
+            potentialParts.RamSpecs = chosenParts.selectedRam != null ?
+                GetAllRamSpecs().Where(r => r.PartNum != chosenParts.selectedRam.PartNum).ToList() : GetAllRamSpecs();
+
+            potentialParts.StorageSpecs = chosenParts.selectedStorage != null ?
+                GetAllStorageSpecs().Where(s => s.PartNum != chosenParts.selectedStorage.PartNum).ToList() : GetAllStorageSpecs();
 
             return potentialParts;
         }
