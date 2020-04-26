@@ -11,5 +11,6 @@ namespace PcSales.Models
         public string ChipSet { get; set; }
         public string MemoryType { get; set; }
         public int TDP { get; set; }
+        public int PartTypeId { get; set; }
     }
 }

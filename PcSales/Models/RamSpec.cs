@@ -10,5 +10,6 @@ namespace PcSales.Models
         public int MemoryModules { get; set; }
         public int MemoryTotal { get; set; }
         public double ClockSpeed { get; set;  }
+        public int PartTypeId { get; set; }
     }
 }

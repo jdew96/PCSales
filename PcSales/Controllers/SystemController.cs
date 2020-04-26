@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PcSales.Models;
 using PcSales.Models.Interfaces;
+using static PcSales.Models.Repositories.SystemRepository;
 
 namespace PcSales.Controllers
 {
@@ -35,7 +36,7 @@ namespace PcSales.Controllers
             return View();
         }
 
-        public IActionResult Update()
+        public IActionResult Update(int id)
         {
             return View();
         }
@@ -66,10 +67,23 @@ namespace PcSales.Controllers
              return _systemRepository.GetAll().ToList();
         }
 
+        [HttpGet("api/[controller]/GetSystem/{id}")]
+        public ActionResult<SystemForSale> GetSystem(int id)
+        {
+            return _systemRepository.GetSystem(id);
+        }
+
         [Route("api/[controller]/UpdateSystem/")]
         public ActionResult<int> UpdateSystem([FromBody] SystemForSale system)
         {
             return _systemRepository.Update(system);
+        }
+
+        // Modify parts attached to system
+        [Route("api/[controller]/UpdatePartsList/")]
+        public ActionResult<int> UpdatePartsList([FromBody] CompositeList partsToSubmit)
+        {
+            return _systemRepository.UpdatePartsList(partsToSubmit);
         }
 
 

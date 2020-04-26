@@ -10,5 +10,6 @@ namespace PcSales.Models
         public bool Modular { get; set; }
         public string EfficiencyRating { get; set; }
         public string FormFactor { get; set; }
+        public int PartTypeId { get; set; }
     }
 }

@@ -7,5 +7,6 @@ namespace PcSales.Models
         public string Manufacturer { get; set; }
         public string PartName { get; set; }
         public string FormFactor { get; set; }
+        public int PartTypeId { get; set; }
     }
 }
