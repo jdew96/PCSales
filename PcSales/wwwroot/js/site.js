@@ -115,8 +115,8 @@ PcSalesApp.controller("systemDeleteController", ["systemService", "window", func
 
     vm.submit = submit;
 
-     function submit(id) {
-          systemService.deleteSystem(id)
+     function submit(systemName) {
+          systemService.deleteSystem(systemName)
                .then(function (response) {
                     console.log("response: ", response);
                     if (response.data == 1) {

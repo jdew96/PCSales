@@ -14,16 +14,24 @@ namespace PcSales.Models.Repositories
             _context = context;
         }
 
-        public int Add(SystemForSale sytem)
+        public int Add(SystemForSale systemForSale)
         {
-            _context.SystemsForSale.Add(sytem);
-            return _context.SaveChanges();
+            List<SystemForSale> systemsForSale = _context.SystemsForSale.ToList();
+            if (systemsForSale.Where(s => s.SystemName == systemForSale.SystemName).Any())
+            {
+                _context.SystemsForSale.Add(systemForSale);
+                return _context.SaveChanges();
+            }
+            else
+            {
+                return -1;
+            }
+
         }
 
-        public int Delete(int id)
+        public int Delete(String systemName)
         {
-            SystemForSale sys = _context.SystemsForSale.FirstOrDefault(s => s.SystemId == id);
-           
+            SystemForSale sys = _context.SystemsForSale.FirstOrDefault(s => s.SystemName == systemName);
             if (sys != null)
             {
                 _context.SystemsForSale.Remove(sys);
@@ -39,9 +47,9 @@ namespace PcSales.Models.Repositories
             return systemsForSale;
         }
 
-        public SystemForSale GetSystem(int id)
+        public SystemForSale GetSystem(String systemName)
         {
-            return _context.SystemsForSale.FirstOrDefault(s => s.SystemId == id);
+            return _context.SystemsForSale.FirstOrDefault(s => s.SystemName == systemName);
         }
 
         public int Update(SystemForSale systemChanges)

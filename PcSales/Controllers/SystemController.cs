@@ -52,10 +52,10 @@ namespace PcSales.Controllers
             return _systemRepository.Add(system);
         }
 
-        [Route("/api/[controller]/DeleteSystem/{id}")]
-        public ActionResult<int> DeleteSystem(int id)
+        [Route("/api/[controller]/DeleteSystem/{systemName}")]
+        public ActionResult<int> DeleteSystem(String systemName)
         {
-            int delete_return = _systemRepository.Delete(id);
+            int delete_return = _systemRepository.Delete(systemName);
             return delete_return;
         }
 
