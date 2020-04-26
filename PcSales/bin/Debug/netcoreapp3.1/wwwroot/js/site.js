@@ -14,6 +14,7 @@ PcSalesApp.factory("systemService", ["$http", function ($http) {
         addSystem: addSystem,
         deleteSystem: deleteSystem,
         getAll: getAll,
+        getSystem: getSystem,
         updateSystem: updateSystem
         // List of functions, seperated by comma
     };
@@ -37,6 +38,10 @@ PcSalesApp.factory("systemService", ["$http", function ($http) {
         return $http.get("/api/system/GetAll");
     }
 
+    function getSystem(sysId) {
+        return $http.get("/api/system/GetSystem/" + sysId);
+    }
+
     function updateSystem(system) {
 
         return $.ajax({
@@ -54,8 +59,9 @@ PcSalesApp.factory("systemService", ["$http", function ($http) {
 /******** SYSTEMS ************/
 // Controller for systems index page
 
-PcSalesApp.controller("systemListController", ["systemService", function (systemService) {
+PcSalesApp.controller("systemListController", ["$window", "systemService",function ($window, systemService) {
     var vm = this;
+    vm.update = update;
 
     systemService.getAll()
         .then(function (response) {
@@ -63,19 +69,51 @@ PcSalesApp.controller("systemListController", ["systemService", function (system
             vm.systems = response.data;
         });
 
+   
+    function update(sysId) {
+        $window.location.href = "/System/Update/?id=" + sysId;
+    }
+
 }]);
 
 // Controller for update system page
 
-PcSalesApp.controller("systemUpdateController", ["systemService", function (systemService) {
+PcSalesApp.controller("systemUpdateController", ["systemService", "partSpecService", function (systemService, partSpecService) {
     var vm = this;
+    vm.system = null;
+    vm.removePart = removePart;
+    vm.parts = [];
 
-    var system = { SystemId: 1, SystemName: "Test Edit 2", Price: 189.00,  InventoryCount: 24 };
+    function getUrlVars() {
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+            vars[key] = value;
+        });
+        return vars;
+    }
 
-    systemService.updateSystem(JSON.stringify(system))
+    var id = getUrlVars()["id"];
+
+    systemService.getSystem(id)
         .then(function (response) {
-            console.log("response: ", response);
-        })
+            vm.system = response.data;
+        });
+
+    partSpecService.getAllPartsForSystem(id)
+        .then(function (response) {
+            angular.forEach(response.data, function (value, key) {
+                console.log("value: ", value);
+                vm.parts.push(value);
+            });
+        });
+
+    function removePart(partNum) {
+    
+        console.log(vm.parts);
+        
+        alert("Index of item to delete: ");
+    }
+
 
 }]);
 
@@ -99,13 +137,8 @@ PcSalesApp.controller("systemAddController", ["systemService", "$window", functi
                 else
                     alert("Error submitted form!");
 
-
             });
-
     }
-    
-   
-
 }]);
 
 // Controller for delete system page
@@ -132,51 +165,73 @@ PcSalesApp.controller("systemDeleteController", ["systemService", "window", func
 
 /***** END SYSTEMS ********/
 
-/****** CaseSpec *****/
-
-// Set of endpoints to handle CaseSpec CRUD
-
-PcSalesApp.factory("caseSpecService", ["$http", function ($http) {
+/***** Part Specs *********/
+// Set of endpoints to handle part spec CRUD
+PcSalesApp.factory("partSpecService", ["$http", function ($http) {
     var service = {
-        getAll: getAll
+        getAllCaseSpecs: getAllCaseSpecs,
+        getAllCpuSpecs: getAllCpuSpecs,
+        getAllGpuSpecs: getAllGpuSpecs,
+        getAllMoboSpecs: getAllMoboSpecs,
+        getAllPsuSpecs: getAllPsuSpecs,
+        getAllRamSpecs: getAllRamSpecs,
+        getAllStorageSpecs: getAllStorageSpecs,
+        getAllPartsForSystem: getAllPartsForSystem
     };
     return service;
 
-    function getAll() {
+    function getAllCaseSpecs() {
         return $http.get("/api/PartSpec/GetAllCaseSpecs");
+    }
+
+    function getAllCpuSpecs() {
+        return $http.get("/api/PartSpec/GetAllCpuSpecs");
+    }
+
+    function getAllGpuSpecs() {
+        return $http.get("/api/PartSpec/GetAllGpuSpecs");
+    }
+
+    function getAllMoboSpecs() {
+        return $http.get("/api/PartSpec/GetAllMoboSpecs");
+    }
+
+    function getAllPsuSpecs() {
+        return $http.get("/api/PartSpec/GetAllPsuSpecs");
+    }
+
+    function getAllRamSpecs() {
+        return $http.get("/api/PartSpec/GetAllRamSpecs");
+    }
+
+    function getAllStorageSpecs() {
+        return $http.get("/api/PartSpec/GetAllStorageSpecs");
+    }
+
+    function getAllPartsForSystem(sysId) {
+        return $http.get("/api/PartSpec/GetSpecsForSystem/" + sysId);
     }
 }]);
 
-PcSalesApp.controller("caseSpecListController", ["caseSpecService", function (caseSpecService) {
+/****** CaseSpec *****/
+PcSalesApp.controller("caseSpecListController", ["partSpecService", function (partSpecService) {
 
     var vm = this;
 
-    caseSpecService.getAll()
+    partSpecService.getAllCaseSpecs()
         .then(function (response) {
             console.log("response: ", response);
             vm.caseSpecs = response.data;
         });
 }]);
-
 /***** END CASESPEC ****/
 
 /***** CPUSpec *********/
-PcSalesApp.factory("cpuSpecService", ["$http", function ($http) {
-    var service = {
-        getAll: getAll
-    };
-    return service;
-
-    function getAll() {
-        return $http.get("/api/PartSpec/GetAllCpuSpecs");
-    }
-}]);
-
-PcSalesApp.controller("cpuSpecListController", ["cpuSpecService", function (cpuSpecService) {
+PcSalesApp.controller("cpuSpecListController", ["partSpecService", function (partSpecService) {
 
     var vm = this;
 
-    cpuSpecService.getAll()
+    partSpecService.getAllCpuSpecs()
         .then(function (response) {
             console.log("response: ", response);
             vm.cpuSpecs = response.data;
@@ -186,22 +241,11 @@ PcSalesApp.controller("cpuSpecListController", ["cpuSpecService", function (cpuS
 /***** END CPUSPEC ****/
 
 /***** GPUSpec *********/
-PcSalesApp.factory("gpuSpecService", ["$http", function ($http) {
-    var service = {
-        getAll: getAll
-    };
-    return service;
-
-    function getAll() {
-        return $http.get("/api/PartSpec/GetAllGpuSpecs");
-    }
-}]);
-
-PcSalesApp.controller("gpuSpecListController", ["gpuSpecService", function (gpuSpecService) {
+PcSalesApp.controller("gpuSpecListController", ["partSpecService", function (partSpecService) {
 
     var vm = this;
 
-    gpuSpecService.getAll()
+    partSpecService.getAllGpuSpecs()
         .then(function (response) {
             console.log("response: ", response);
             vm.gpuSpecs = response.data;
@@ -211,22 +255,11 @@ PcSalesApp.controller("gpuSpecListController", ["gpuSpecService", function (gpuS
 /***** END GPUSPEC ****/
 
 /***** MoboSpec *********/
-PcSalesApp.factory("moboSpecService", ["$http", function ($http) {
-    var service = {
-        getAll: getAll
-    };
-    return service;
-
-    function getAll() {
-        return $http.get("/api/PartSpec/GetAllMoboSpecs");
-    }
-}]);
-
-PcSalesApp.controller("moboSpecListController", ["moboSpecService", function (moboSpecService) {
+PcSalesApp.controller("moboSpecListController", ["partSpecService", function (partSpecService) {
 
     var vm = this;
 
-    moboSpecService.getAll()
+    partSpecService.getAllMoboSpecs()
         .then(function (response) {
             console.log("response: ", response);
             vm.moboSpecs = response.data;
@@ -236,22 +269,11 @@ PcSalesApp.controller("moboSpecListController", ["moboSpecService", function (mo
 /***** END MoboSpec ****/
 
 /***** PsuSpec *********/
-PcSalesApp.factory("psuSpecService", ["$http", function ($http) {
-    var service = {
-        getAll: getAll
-    };
-    return service;
-
-    function getAll() {
-        return $http.get("/api/PartSpec/GetAllPsuSpecs");
-    }
-}]);
-
-PcSalesApp.controller("psuSpecListController", ["psuSpecService", function (psuSpecService) {
+PcSalesApp.controller("psuSpecListController", ["partSpecService", function (partSpecService) {
 
     var vm = this;
 
-    psuSpecService.getAll()
+    partSpecService.getAllPsuSpecs()
         .then(function (response) {
             console.log("response: ", response);
             vm.psuSpecs = response.data;
@@ -260,22 +282,11 @@ PcSalesApp.controller("psuSpecListController", ["psuSpecService", function (psuS
 /***** END PsuSpec ****/
 
 /***** RamSpec *********/
-PcSalesApp.factory("ramSpecService", ["$http", function ($http) {
-    var service = {
-        getAll: getAll
-    };
-    return service;
-
-    function getAll() {
-        return $http.get("/api/PartSpec/GetAllRamSpecs");
-    }
-}]);
-
-PcSalesApp.controller("ramSpecListController", ["ramSpecService", function (ramSpecService) {
+PcSalesApp.controller("ramSpecListController", ["partSpecService", function (partSpecService) {
 
     var vm = this;
 
-    ramSpecService.getAll()
+    partSpecService.getAllRamSpecs()
         .then(function (response) {
             console.log("response: ", response);
             vm.ramSpecs = response.data;
@@ -286,22 +297,11 @@ PcSalesApp.controller("ramSpecListController", ["ramSpecService", function (ramS
 
 
 /***** StorageSpec *********/
-PcSalesApp.factory("storageSpecService", ["$http", function ($http) {
-    var service = {
-        getAll: getAll
-    };
-    return service;
-
-    function getAll() {
-        return $http.get("/api/PartSpec/GetAllStorageSpecs");
-    }
-}]);
-
-PcSalesApp.controller("storageSpecListController", ["storageSpecService", function (storageSpecService) {
+PcSalesApp.controller("storageSpecListController", ["partSpecService", function (partSpecService) {
 
     var vm = this;
 
-    storageSpecService.getAll()
+    partSpecService.getAllStorageSpecs()
         .then(function (response) {
             console.log("response: ", response);
             vm.storageSpecs = response.data;

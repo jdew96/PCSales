@@ -1,14 +1,12 @@
 ﻿<Properties StartupConfiguration="{784974F3-B6C8-4623-9DF5-D09918F5A621}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="PcSales/appsettings.json">
+  <MonoDevelop.Ide.Workbench ActiveDocument="PcSales/Views/System/Index.cshtml">
     <Files>
-      <File FileName="PcSales/Controllers/PartSpecController.cs" Line="156" Column="1" IsPinned="True" />
-      <File FileName="PcSales/Views/Shared/_Layout.cshtml" IsPinned="True" />
-      <File FileName="PcSales/wwwroot/js/site.js" IsPinned="True" />
-      <File FileName="PcSales/Models/Repositories/PartSpecRepository.cs" />
-      <File FileName="PcSales/Models/StorageSpec.cs" />
-      <File FileName="PcSales/Models/Repositories/SystemRepository.cs" />
-      <File FileName="PcSales/Controllers/SystemController.cs" />
-      <File FileName="PcSales/appsettings.json" Line="11" Column="45" />
+      <File FileName="PcSales/Controllers/PartSpecController.cs" Line="60" Column="1" />
+      <File FileName="PcSales/Models/Interfaces/IPartSpecRespository.cs" Line="12" Column="43" />
+      <File FileName="PcSales/Models/Repositories/PartSpecRepository.cs" Line="67" Column="1" />
+      <File FileName="PcSales/wwwroot/js/site.js" Line="99" Column="39" />
+      <File FileName="PcSales/Views/System/Update.cshtml" Line="13" Column="62" />
+      <File FileName="PcSales/Views/System/Index.cshtml" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,16 +15,21 @@
             <Node name="PcSales" expanded="True">
               <Node name="Controllers" expanded="True" />
               <Node name="Models" expanded="True">
+                <Node name="Interfaces" expanded="True" />
                 <Node name="Repositories" expanded="True" />
               </Node>
               <Node name="Properties" expanded="True" />
               <Node name="Views" expanded="True">
+                <Node name="PartSpec" expanded="True" />
                 <Node name="Shared" expanded="True" />
+                <Node name="System" expanded="True">
+                  <Node name="Index.cshtml" selected="True" />
+                </Node>
               </Node>
               <Node name="wwwroot" expanded="True">
+                <Node name="css" expanded="True" />
                 <Node name="js" expanded="True" />
               </Node>
-              <Node name="appsettings.json" selected="True" />
             </Node>
           </Node>
         </State>

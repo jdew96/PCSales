@@ -52,15 +52,23 @@ namespace PcSales.Controllers
         {
             return View();
         }
-        
-        //CaseSpec
-        [Route("api/[controller]/AddCaseSpec/")]
-        public ActionResult<int> AddCaseSpec([FromBody] CaseSpec spec)
+
+        // Get all part specs for individual system
+        [Route("api/[controller]/GetSpecsForSystem/{sysId}")]
+        public ActionResult<SystemPartsList> GetSpecsForSystem(int sysId)
         {
-            return _partSpecRepository.AddCaseSpec(spec);
+            return _partSpecRepository.GetPartsForSystem(sysId);
         }
 
+        // Get all parts which could potentially be added to system
+        [Route("api/[controller]/GetPotentialParts/{sysId}")]
+        public ActionResult<PartsList> GetPotentialParts(int sysId)
+        {
+            return _partSpecRepository.GetPotentialParts(sysId);
+        }
+        
 
+        //CaseSpec
         [HttpGet("api/[controller]/GetAllCaseSpecs")]
         public ActionResult<IEnumerable<CaseSpec>> GetAllCaseSpecs()
         {
@@ -69,13 +77,6 @@ namespace PcSales.Controllers
 
 
         //CpuSpec
-        [Route("api/[controller]/AddCpuSpec/")]
-        public ActionResult<int> AddCpuSpec([FromBody] CpuSpec spec)
-        {
-            return _partSpecRepository.AddCpuSpec(spec);
-        }
-
-
         [HttpGet("api/[controller]/GetAllCpuSpecs")]
         public ActionResult<IEnumerable<CpuSpec>> GetAllCpuSpecs()
         {
@@ -83,13 +84,6 @@ namespace PcSales.Controllers
         }
 
         //GpuSpec
-        [Route("api/[controller]/AddGpuSpec/")]
-        public ActionResult<int> AddGpuSpec([FromBody] GpuSpec spec)
-        {
-            return _partSpecRepository.AddGpuSpec(spec);
-        }
-
-
         [HttpGet("api/[controller]/GetAllGpuSpecs")]
         public ActionResult<IEnumerable<GpuSpec>> GetAllGpuSpecs()
         {
@@ -97,13 +91,6 @@ namespace PcSales.Controllers
         }
 
         //MoboSpec
-        [Route("api/[controller]/AddMoboSpec/")]
-        public ActionResult<int> AddMoboSpec([FromBody] MoboSpec spec)
-        {
-            return _partSpecRepository.AddMoboSpec(spec);
-        }
-
-
         [HttpGet("api/[controller]/GetAllMoboSpecs")]
         public ActionResult<IEnumerable<MoboSpec>> GetAllMoboSpecs()
         {
@@ -111,13 +98,6 @@ namespace PcSales.Controllers
         }
 
         //PsuSpec
-        [Route("api/[controller]/AddPsuSpec/")]
-        public ActionResult<int> AddPsuSpec([FromBody] PsuSpec spec)
-        {
-            return _partSpecRepository.AddPsuSpec(spec);
-        }
-
-
         [HttpGet("api/[controller]/GetAllPsuSpecs")]
         public ActionResult<IEnumerable<PsuSpec>> GetAllPsuSpecs()
         {
@@ -125,13 +105,6 @@ namespace PcSales.Controllers
         }
 
         //RamSpec
-        [Route("api/[controller]/AddRamSpec/")]
-        public ActionResult<int> AddRamSpec([FromBody] RamSpec spec)
-        {
-            return _partSpecRepository.AddRamSpec(spec);
-        }
-
-
         [HttpGet("api/[controller]/GetAllRamSpecs")]
         public ActionResult<IEnumerable<RamSpec>> GetAllRamSpecs()
         {
@@ -139,13 +112,6 @@ namespace PcSales.Controllers
         }
 
         //StorageSpec
-        [Route("api/[controller]/AddStorageSpec/")]
-        public ActionResult<int> AddStorageSpec([FromBody] StorageSpec spec)
-        {
-            return _partSpecRepository.AddStorageSpec(spec);
-        }
-
-
         [HttpGet("api/[controller]/GetAllStorageSpecs")]
         public ActionResult<IEnumerable<StorageSpec>> GetAllStorageSpecs()
         {

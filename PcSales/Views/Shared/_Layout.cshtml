@@ -6,6 +6,8 @@
     <title>@ViewData["Title"] - PcSales</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
     <header>
@@ -16,46 +18,29 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="System" asp-action="Index">Systems Index</a>
-                        </li>
-                        @*
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="System" asp-action="Update">Update System</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="System" asp-action="Add">Add System</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="System" asp-action="Delete">Delete System</a>
-        </li>*@
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="PartSpec" asp-action="CaseSpecIndex">Case Spec Index</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="PartSpec" asp-action="CpuSpecIndex">CPU Spec Index</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="PartSpec" asp-action="GpuSpecIndex">GPU Spec Index</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="PartSpec" asp-action="GpuSpecIndex">GPU Spec Index</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="PartSpec" asp-action="MoboSpecIndex">Mobo Spec Index</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="PartSpec" asp-action="PsuSpecIndex">PSU Spec Index</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="PartSpec" asp-action="RamSpecIndex">RAM Spec Index</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="PartSpec" asp-action="StorageSpecIndex">Storage Spec Index</a>
-                        </li>
-                    </ul>
+                    <div class="dropdown" style="text-align:left">
+                        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                            View Pages
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-header" style="font-size:24px">System</li>
+                            <li><a class="nav-link text-dark" asp-area="" asp-controller="System" asp-action="Index">Systems Index</a></li>
+                            <li> <a class="nav-link text-dark" asp-area="" asp-controller="System" asp-action="Add">Add System</a></li>
+                            <li> <a class="nav-link text-dark" asp-area="" asp-controller="System" asp-action="Delete">Delete System</a></li>
+                            <li class="divider"></li>
+                            <li class="dropdown-header" style="font-size:24px">Parts Listings</li>
+                            <li> <a class="nav-link text-dark" asp-area="" asp-controller="PartSpec" asp-action="CaseSpecIndex">Case Spec Index</a></li>
+                            <li> <a class="nav-link text-dark" asp-area="" asp-controller="PartSpec" asp-action="CpuSpecIndex">CPU Spec Index</a></li>
+                            <li><a class="nav-link text-dark" asp-area="" asp-controller="PartSpec" asp-action="GpuSpecIndex">GPU Spec Index</a></li>
+                            <li><a class="nav-link text-dark" asp-area="" asp-controller="PartSpec" asp-action="MoboSpecIndex">Mobo Spec Index</a></li>
+                            <li><a class="nav-link text-dark" asp-area="" asp-controller="PartSpec" asp-action="PsuSpecIndex">PSU Spec Index</a></li>
+                            <li><a class="nav-link text-dark" asp-area="" asp-controller="PartSpec" asp-action="RamSpecIndex">RAM Spec Index</a></li>
+                            <li><a class="nav-link text-dark" asp-area="" asp-controller="PartSpec" asp-action="StorageSpecIndex">Storage Spec Index</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>

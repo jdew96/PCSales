@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using static PcSales.Models.Repositories.SystemRepository;
 
 namespace PcSales.Models.Interfaces
 {
@@ -9,6 +10,7 @@ namespace PcSales.Models.Interfaces
         IEnumerable<SystemForSale> GetAll();
         int Add(SystemForSale sytem);
         int Update(SystemForSale systemChanges);
+        int UpdatePartsList(CompositeList partsToSubmit); // Modify parts attached to system
         int Delete(int id);
     }
 }

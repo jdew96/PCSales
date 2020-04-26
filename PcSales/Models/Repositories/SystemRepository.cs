@@ -56,5 +56,39 @@ namespace PcSales.Models.Repositories
             // Update failed 
             return -1;
         }
+
+        // Modify parts attached to system
+        public int UpdatePartsList(CompositeList partsToSubmit)
+        {
+            IEnumerable<SystemToPart> s2p = _context.SystemToPart.Where(s => s.SystemId == partsToSubmit.parts[0].systemId);
+            if(s2p.Count() != 0) // Need to delete any existing record before addig new 
+            {
+                foreach(var s in s2p) 
+                    _context.SystemToPart.Remove(s);
+            }
+
+            foreach (var p in partsToSubmit.parts) // Add records for systemToParts
+                _context.SystemToPart.Add(new SystemToPart()
+                {
+                    SystemId = p.systemId,
+                    PartNum = p.partNumber,
+                    PartTypeId = p.partTypeId
+                });
+
+
+            return _context.SaveChanges();
+        }
+
+        public class partToSubmit
+        {
+            public int partNumber { get; set; }
+            public int partTypeId { get; set; }
+            public int systemId { get; set; }
+        }
+
+        public class CompositeList
+        {
+            public List<partToSubmit> parts { get; set; }
+        }
     }
 }
