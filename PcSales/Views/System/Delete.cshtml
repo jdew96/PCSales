@@ -2,12 +2,15 @@
     ViewData["Title"] = "Delete System";
 }
 
-    <div ng-app="PcSalesApp" ng-controller="systemDeleteController as vm">
-        <form novalidate class="simple-form">
-            <label>System To Delete: <input type="text" ng-model="vm.system.SystemName" /></label><br />
-            <input type="submit" ng-click="vm.submit(vm.system.SystemName)" value="Submit" />
-        </form>
+<div ng-app="PcSalesApp" ng-controller="systemDeleteController as vm">
+    <div class="text-center">
+        <h3>System Delete Page</h3>
     </div>
+    <form novalidate class="simple-form">
+        <label>System To Delete: <input type="text" ng-model="vm.systemName" /></label><br />
+        <input type="submit" ng-click="vm.submit(vm.systemName)" value="Submit" />
+    </form>
+</div>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>

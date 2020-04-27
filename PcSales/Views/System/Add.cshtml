@@ -2,14 +2,17 @@
     ViewData["Title"] = "Add System";
 }
 
-<div ng-app="PcSalesApp" ng-controller="systemAddController as vm">
-    <form novalidate class="simple-form">
-        <label>System Name: <input type="text" ng-model="vm.system.systemName" /></label><br />
-        <label>Price: <input type="number" ng-model="vm.system.Price" /></label><br />
-        <label>Inventory Count: <input type="number" ng-model="vm.system.inventoryCount" /></label><br />
-        <input type="submit" ng-click="vm.submit()" value="Submit" />
-    </form>
-</div>
+    <div ng-app="PcSalesApp" ng-controller="systemAddController as vm">
+        <div class="text-center">
+            <h3>System Add Page</h3>
+        </div>
+        <form novalidate class="simple-form">
+            <label>System Name: <input type="text" ng-model="vm.system.systemName" /></label><br />
+            <label>Price: <input type="number" ng-model="vm.system.Price" /></label><br />
+            <label>Inventory Count: <input type="number" ng-model="vm.system.inventoryCount" /></label><br />
+            <input type="submit" ng-click="vm.submit()" value="Submit" />
+        </form>
+    </div>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>

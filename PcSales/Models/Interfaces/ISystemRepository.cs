@@ -11,6 +11,6 @@ namespace PcSales.Models.Interfaces
         int Add(SystemForSale sytem);
         int Update(SystemForSale systemChanges);
         int UpdatePartsList(CompositeList partsToSubmit); // Modify parts attached to system
-        int Delete(int id);
+        int Delete(String systemName);
     }
 }

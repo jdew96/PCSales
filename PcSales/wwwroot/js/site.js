@@ -32,8 +32,8 @@ PcSalesApp.factory("systemService", ["$http", function ($http) {
         });
     }
 
-    function deleteSystem(id) {
-        return $http.post("/api/system/DeleteSystem/" + id);
+    function deleteSystem(systemName) {
+        return $http.post("/api/system/DeleteSystem/" + systemName);
     }
 
     function getAll() {
@@ -193,7 +193,7 @@ PcSalesApp.controller("systemAddController", ["systemService", "$window", functi
                     $window.location.href = "/";
                 }
                 else
-                    alert("Error submitting form!");
+                    alert("Error submitting form! The system name must be unique!");
 
             });
     }
@@ -201,15 +201,15 @@ PcSalesApp.controller("systemAddController", ["systemService", "$window", functi
 
 // Controller for delete system page
 
-PcSalesApp.controller("systemDeleteController", ["systemService", "window", function (systemService) {
+PcSalesApp.controller("systemDeleteController", ["systemService", "$window", function (systemService, $window) {
     var vm = this;
 
     vm.submit = submit;
+    vm.systemName = "";
 
-     function submit(systemName) {
+    function submit(systemName) {
           systemService.deleteSystem(systemName)
                .then(function (response) {
-                    console.log("response: ", response);
                     if (response.data == 1) {
                          alert("System Deleted successfully!");
                          $window.location.href = "/";

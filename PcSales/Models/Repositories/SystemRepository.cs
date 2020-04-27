@@ -17,7 +17,8 @@ namespace PcSales.Models.Repositories
         public int Add(SystemForSale systemForSale)
         {
             List<SystemForSale> systemsForSale = _context.SystemsForSale.ToList();
-            if (systemsForSale.Where(s => s.SystemName == systemForSale.SystemName).Any())
+            
+            if (systemsForSale.FirstOrDefault(s => s.SystemName == systemForSale.SystemName) == null) // There are no matches
             {
                 _context.SystemsForSale.Add(systemForSale);
                 return _context.SaveChanges();
@@ -47,9 +48,9 @@ namespace PcSales.Models.Repositories
             return systemsForSale;
         }
 
-        public SystemForSale GetSystem(String systemName)
+        public SystemForSale GetSystem(int sysId)
         {
-            return _context.SystemsForSale.FirstOrDefault(s => s.SystemName == systemName);
+            return _context.SystemsForSale.FirstOrDefault(s => s.SystemId == sysId);
         }
 
         public int Update(SystemForSale systemChanges)
